@@ -1,7 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
 
+
+/* ======= ZÁKLAD ======= */
+
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
@@ -13,3 +18,217 @@ html {
   margin-right: auto;
   margin-left: auto;
 }
+
+body {
+  font-family: 'Arial', sans-serif;
+  color: white;
+  padding: 1rem;
+}
+
+/* ======= HEADER ======= */
+.app-header {
+  position: relative;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.app-header h1 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.app-header button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+}
+
+/* ======= LAYOUT ======= */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+@media (min-width: 768px) {
+  .main-content {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}
+
+/* ======= HOME CARD ======= */
+.home-card, .category-card {
+  background-color: none;
+  padding: 1.5rem;
+  border-radius: 10px;
+  text-align: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.home-card img {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+
+/* ======= BUTTONS ======= */
+@media (max-width: 480px) {
+  .btns {
+    width: 90%;
+  }
+}
+.btns {
+  width: 70%;
+  max-width: 300px;
+  margin-top: 1rem;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.btns.stats {
+  background-color: #236E4C; 
+  color: white;
+  font-size: large;
+  max-width: 100%;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  width: 100%;
+  max-width: 300px;
+}
+
+.btns.start {
+  background-color: #D30F0F; 
+  color: white;
+  font-size: large;
+  width: 100%;
+  max-width: 300px;
+}
+
+.btns-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* ======= CATEGORY SELECTOR ======= */
+.category-card img {
+  max-width: 100%;
+  margin-top: 1rem;
+}
+
+.category-card h2 {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  color: #236E4C;
+}
+
+.btns.stats:hover {
+  background-color: #1fc89c;
+  transform: scale(1.03);
+  transition: all 0.2s ease;
+}
+
+.btns.start:hover {
+  background-color: #e53935;
+  transform: scale(1.03);
+  transition: all 0.2s ease;
+}
+
+.home-card:hover,
+.category-card:hover {
+  background-color: transparent;
+  box-shadow: none;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.app-header button:hover {
+  color: #1fc89c;
+  transform: scale(1.1);
+  transition: all 0.2s ease;
+}
+
+.slogan {
+  font-style: italic;
+  margin: 4rem 0;
+  opacity: 0;
+  font-size: large;
+  animation: fadeIn 1.2s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* ======= HOME and LOGO ======= */
+
+.home-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 1rem;
+}
+
+.home-icon img {
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.home-icon:hover img {
+  transform: scale(1.2);
+}
+
+@keyframes bounce {
+  0%   { transform: scale(1); }
+  30%  { transform: scale(1.2); }
+  50%  { transform: scale(0.95); }
+  70%  { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.home-icon.clicked img {
+  animation: bounce 0.4s ease;
+}
+
+.logo-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-logo {
+  width: 200px;
+  height: auto;
+  filter: brightness(0) invert(1);
+  object-fit: contain;
+}
+
+.logo {
+  width: 140px;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
