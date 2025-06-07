@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export const StickmanBack = ({ selectedPart, handleClick, isVisible }) => {
     if (!isVisible) return null;
   
@@ -22,6 +24,7 @@ export const StickmanBack = ({ selectedPart, handleClick, isVisible }) => {
           onClick={() => handleClick('back-head')}
           className={selectedPart === 'back-head' ? 'selected' : ''}
         />
+        <Link to="upper">
         <rect
           x="50"
           y="100"
@@ -34,6 +37,8 @@ export const StickmanBack = ({ selectedPart, handleClick, isVisible }) => {
           onClick={() => handleClick('triceps-left')}
           className={selectedPart === 'triceps-left' ? 'selected' : ''}
         />
+        </Link>
+        <Link to="upper">
         <rect
           x="134"
           y="100"
@@ -46,6 +51,8 @@ export const StickmanBack = ({ selectedPart, handleClick, isVisible }) => {
           onClick={() => handleClick('triceps-right')}
           className={selectedPart === 'triceps-right' ? 'selected' : ''}
         />
+        </Link>
+        <Link to="core">
        <rect
         x="75"
         y="100"
@@ -58,6 +65,8 @@ export const StickmanBack = ({ selectedPart, handleClick, isVisible }) => {
         onClick={() => handleClick('back')}
         className={selectedPart === 'back' ? 'selected' : ''}
         />
+        </Link>
+        <Link to="lower">
         <rect
           x="75"
           y="210"
@@ -70,6 +79,8 @@ export const StickmanBack = ({ selectedPart, handleClick, isVisible }) => {
           onClick={() => handleClick('ham-left')}
           className={selectedPart === 'ham-left' ? 'selected' : ''}
         />
+        </Link>
+        <Link to="lower">
         <rect
           x="105"
           y="210"
@@ -82,6 +93,7 @@ export const StickmanBack = ({ selectedPart, handleClick, isVisible }) => {
           onClick={() => handleClick('ham-right')}
           className={selectedPart === 'ham-right' ? 'selected' : ''}
         />
+        </Link>
       </svg>
       </div>
     );
