@@ -23,6 +23,7 @@ body {
   font-family: 'Arial', sans-serif;
   color: white;
   padding: 1rem;
+  background-color: #2d231e;
 }
 
 /* ======= HEADER ======= */
@@ -62,7 +63,8 @@ body {
 }
 
 /* ======= HOME CARD ======= */
-.home-card, .category-card {
+.home-card,
+.category-card {
   background-color: none;
   padding: 1.5rem;
   border-radius: 10px;
@@ -87,6 +89,7 @@ body {
     width: 90%;
   }
 }
+
 .btns {
   width: 70%;
   max-width: 300px;
@@ -101,19 +104,19 @@ body {
 }
 
 .btns.stats {
-  background-color: #236E4C; 
+  background-color: #236E4C;
   color: white;
   font-size: large;
   max-width: 100%;
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   align-items: center;
   width: 100%;
   max-width: 300px;
 }
 
 .btns.start {
-  background-color: #D30F0F; 
+  background-color: #D30F0F;
   color: white;
   font-size: large;
   width: 100%;
@@ -196,16 +199,31 @@ body {
   cursor: pointer;
   transition: transform 0.2s ease;
 }
+
 .home-icon:hover img {
   transform: scale(1.2);
 }
 
 @keyframes bounce {
-  0%   { transform: scale(1); }
-  30%  { transform: scale(1.2); }
-  50%  { transform: scale(0.95); }
-  70%  { transform: scale(1.05); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+
+  30% {
+    transform: scale(1.2);
+  }
+
+  50% {
+    transform: scale(0.95);
+  }
+
+  70% {
+    transform: scale(1.05);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 
 .home-icon.clicked img {
@@ -231,4 +249,3 @@ body {
   height: auto;
   margin-bottom: 1rem;
 }
-
