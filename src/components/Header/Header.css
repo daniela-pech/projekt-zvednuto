@@ -1,0 +1,14 @@
+.header {
+  position: relative;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.header-home {
+  width: 20%;
+  display: flex;
+}
+
+.header-logo {
+  width: 50%;
+}
