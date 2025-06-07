@@ -54,7 +54,7 @@ export const ExerciseSelect = ({ category }) => {
   return (
     <div className="container">
       <h1>{category}</h1>
-
+      <br />
       <form className="exercise-form">
         <label>
           VYBER PARTII:
@@ -91,7 +91,7 @@ export const ExerciseSelect = ({ category }) => {
           </label>
         )}
       </form>
-
+      <br />
       <ExerciseList
         category={category}
         subcategory={subcategory}

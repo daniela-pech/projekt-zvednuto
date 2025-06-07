@@ -51,6 +51,10 @@ const router = createBrowserRouter([
     path: '/stickman/exercisedetail',
     element: <ExerciseDetail />,
   },
+  {
+    path: 'exercise/:id',
+    element: <ExerciseDetail />,
+  },
 ]);
 
 createRoot(document.querySelector('#app')).render(

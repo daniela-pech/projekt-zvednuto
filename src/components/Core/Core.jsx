@@ -4,9 +4,9 @@ import './Core.css';
 
 export const Core = () => {
   return (
-    <>
+    <div className="container">
       <Header />
       <ExerciseSelect category={'Střed těla'} />
-    </>
+    </div>
   );
 };

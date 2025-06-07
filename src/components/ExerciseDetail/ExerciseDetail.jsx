@@ -1,7 +1,8 @@
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { supabase } from '../SupabaseClient/SupabaseClient';
 import { Button } from '../Button/Button';
+import { Header } from '../Header/Header';
 import './ExerciseDetail.css';
 
 export const ExerciseDetail = () => {
@@ -26,7 +27,10 @@ export const ExerciseDetail = () => {
 
   return (
     <div className="container">
+      <Header />
+
       <h2>{exercise.name}</h2>
+      <br />
       <p>{exercise.description}</p>
       {exercise.image_url && (
         <img
@@ -35,7 +39,7 @@ export const ExerciseDetail = () => {
           className="exercise-detail-image"
         />
       )}
-      <Link to="/cvicit">
+      <Link>
         <Button text="Začít trénink" />
       </Link>
     </div>
