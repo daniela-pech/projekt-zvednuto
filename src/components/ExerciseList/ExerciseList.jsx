@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { supabase } from '../SupabaseClient/SupabaseClient';
-import './ExcerciseList.css';
+import './ExerciseList.css';
 
 export const ExerciseList = ({ category, subcategory, resistanceType }) => {
   const [exercises, setExercises] = useState([]);
@@ -40,7 +40,7 @@ export const ExerciseList = ({ category, subcategory, resistanceType }) => {
             <img
               src={cvik.image_url}
               alt={cvik.name}
-              className="excercise-image"
+              className="exercise-image"
             />
           )}
         </li>

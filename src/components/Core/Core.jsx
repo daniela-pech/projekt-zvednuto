@@ -1,12 +1,12 @@
 import { Header } from '../Header/Header';
-import { ExcerciseSelect } from '../ExcerciseSelect/ExcerciseSelect';
+import { ExerciseSelect } from '../ExerciseSelect/ExerciseSelect';
 import './Core.css';
 
 export const Core = () => {
   return (
     <>
       <Header />
-      <ExcerciseSelect kategorie={'Střed těla'} />
+      <ExerciseSelect category={'Střed těla'} />
     </>
   );
 };
