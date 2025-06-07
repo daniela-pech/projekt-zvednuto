@@ -6,6 +6,8 @@ import { StickmanPage } from './components/StickmanPage/StickmanPage';
 import { UpperBody } from './components/UpperBody/UpperBody';
 import { LowerBody } from './components/LowerBody/LowerBody';
 import { Core } from './components/Core/Core';
+import { ExerciseList } from './components/ExcerciseList/ExcerciseList';
+import { ExcerciseSelect } from './components/ExcerciseSelect/ExcerciseSelect';
 
 const App = () => {
   return (
@@ -35,6 +37,14 @@ const router = createBrowserRouter([
   {
     path: '/stickman/core',
     element: <Core />,
+  },
+  {
+    path: '/stickman/excerciselist',
+    element: <ExerciseList />,
+  },
+  {
+    path: '/stickman/excerciseselect',
+    element: <ExcerciseSelect />,
   },
 ]);
 
