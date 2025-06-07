@@ -1,9 +1,9 @@
-import { useParams, useNavigate, Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { supabase } from "../SupabaseClient/SupabaseClient";
-import { Button } from "../Button/Button";
-import { Header } from "../Header/Header";
-import "./ExerciseDetail.css";
+import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { supabase } from '../SupabaseClient/SupabaseClient';
+import { Button } from '../Button/Button';
+import { Header } from '../Header/Header';
+import './ExerciseDetail.css';
 
 export const ExerciseDetail = () => {
   const { id } = useParams();
@@ -14,9 +14,9 @@ export const ExerciseDetail = () => {
   useEffect(() => {
     const fetchExercise = async () => {
       const { data } = await supabase
-        .from("exercises")
-        .select("*")
-        .eq("id", id)
+        .from('exercises')
+        .select('*')
+        .eq('id', id)
         .single();
 
       setExercise(data);
@@ -26,7 +26,7 @@ export const ExerciseDetail = () => {
   }, [id]);
 
   useEffect(() => {
-    const stored = localStorage.getItem("zvednuto-vyber");
+    const stored = localStorage.getItem('zvednuto-vyber');
     if (stored) {
       setSavedExercises(JSON.parse(stored));
     }
@@ -34,12 +34,12 @@ export const ExerciseDetail = () => {
 
   const handleAddExercise = () => {
     const updated = [...savedExercises, exercise];
-    localStorage.setItem("zvednuto-vyber", JSON.stringify(updated));
+    localStorage.setItem('zvednuto-vyber', JSON.stringify(updated));
     setSavedExercises(updated);
   };
 
   const handleReset = () => {
-    localStorage.removeItem("zvednuto-vyber");
+    localStorage.removeItem('zvednuto-vyber');
     setSavedExercises([]);
   };
 
@@ -75,7 +75,7 @@ export const ExerciseDetail = () => {
       <Link to="/stickman">
         <Button text="+ Přidat cvik" />
       </Link>
-      <Link to="/">
+      <Link to="/workoutpage">
         <Button text="Hotovo" />
       </Link>
       <Button text="Začít znovu" onClick={handleReset} />
