@@ -1,12 +1,12 @@
-import './UpperBody.css';
+import './LowerBody.css';
 import { Header } from '../Header/Header';
 
-export const UpperBody = () => {
+export const LowerBody = () => {
   return (
     <>
       <Header />
       <main>
-        <p>Horní část</p>
+        <p>Spodní část</p>
       </main>
     </>
   );

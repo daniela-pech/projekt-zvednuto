@@ -24,18 +24,20 @@ export const StickmanFront = ({ selectedPart, handleClick, isVisible }) => {
           onClick={() => handleClick('head')}
           className={selectedPart === 'head' ? 'selected' : ''}
         />
-        <rect
-          x="50"
-          y="100"
-          width="16"
-          height="60"
-          rx="5"
-          stroke="white"
-          strokeWidth="4"
-          fill="none"
-          onClick={() => handleClick('left-arm')}
-          className={selectedPart === 'left-arm' ? 'selected' : ''}
-        />
+        <Link to="upper">
+          <rect
+            x="50"
+            y="100"
+            width="16"
+            height="60"
+            rx="5"
+            stroke="white"
+            strokeWidth="4"
+            fill="none"
+            onClick={() => handleClick('left-arm')}
+            className={selectedPart === 'left-arm' ? 'selected' : ''}
+          />
+        </Link>
         <Link to="upper">
           <rect
             x="134"
@@ -50,54 +52,62 @@ export const StickmanFront = ({ selectedPart, handleClick, isVisible }) => {
             className={selectedPart === 'right-arm' ? 'selected' : ''}
           />
         </Link>
-        <rect
-          x="75"
-          y="100"
-          width="50"
-          height="30"
-          rx="10"
-          stroke="white"
-          strokeWidth="4"
-          fill="none"
-          onClick={() => handleClick('chest')}
-          className={selectedPart === 'chest' ? 'selected' : ''}
-        />
-        <rect
-          x="80"
-          y="140"
-          width="40"
-          height="60"
-          rx="10"
-          stroke="white"
-          strokeWidth="4"
-          fill="none"
-          onClick={() => handleClick('core')}
-          className={selectedPart === 'core' ? 'selected' : ''}
-        />
-        <rect
-          x="75"
-          y="210"
-          width="20"
-          height="70"
-          rx="8"
-          stroke="white"
-          strokeWidth="4"
-          fill="none"
-          onClick={() => handleClick('left-leg')}
-          className={selectedPart === 'left-leg' ? 'selected' : ''}
-        />
-        <rect
-          x="105"
-          y="210"
-          width="20"
-          height="70"
-          rx="8"
-          stroke="white"
-          strokeWidth="4"
-          fill="none"
-          onClick={() => handleClick('right-leg')}
-          className={selectedPart === 'right-leg' ? 'selected' : ''}
-        />
+        <Link to="upper">
+          <rect
+            x="75"
+            y="100"
+            width="50"
+            height="30"
+            rx="10"
+            stroke="white"
+            strokeWidth="4"
+            fill="none"
+            onClick={() => handleClick('chest')}
+            className={selectedPart === 'chest' ? 'selected' : ''}
+          />
+        </Link>
+        <Link to="core">
+          <rect
+            x="80"
+            y="140"
+            width="40"
+            height="60"
+            rx="10"
+            stroke="white"
+            strokeWidth="4"
+            fill="none"
+            onClick={() => handleClick('core')}
+            className={selectedPart === 'core' ? 'selected' : ''}
+          />
+        </Link>
+        <Link to="lower">
+          <rect
+            x="75"
+            y="210"
+            width="20"
+            height="70"
+            rx="8"
+            stroke="white"
+            strokeWidth="4"
+            fill="none"
+            onClick={() => handleClick('left-leg')}
+            className={selectedPart === 'left-leg' ? 'selected' : ''}
+          />
+        </Link>
+        <Link to="lower">
+          <rect
+            x="105"
+            y="210"
+            width="20"
+            height="70"
+            rx="8"
+            stroke="white"
+            strokeWidth="4"
+            fill="none"
+            onClick={() => handleClick('right-leg')}
+            className={selectedPart === 'right-leg' ? 'selected' : ''}
+          />
+        </Link>
       </svg>
     </div>
   );

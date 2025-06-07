@@ -4,6 +4,8 @@ import { createBrowserRouter, RouterProvider, Link } from 'react-router-dom';
 import './global.css';
 import { StickmanPage } from './components/StickmanPage/StickmanPage';
 import { UpperBody } from './components/UpperBody/UpperBody';
+import { LowerBody } from './components/LowerBody/LowerBody';
+import { Core } from './components/Core/Core';
 
 const App = () => {
   return (
@@ -25,6 +27,14 @@ const router = createBrowserRouter([
   {
     path: '/stickman/upper',
     element: <UpperBody />,
+  },
+  {
+    path: '/stickman/lower',
+    element: <LowerBody />,
+  },
+  {
+    path: '/stickman/core',
+    element: <Core />,
   },
 ]);
 
