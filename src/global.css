@@ -17,6 +17,10 @@ html {
   max-width: 26rem;
   margin-right: auto;
   margin-left: auto;
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+
 }
 
 body {
@@ -170,13 +174,7 @@ body {
   transition: all 0.2s ease;
 }
 
-.slogan {
-  font-style: italic;
-  margin: 4rem 0;
-  opacity: 0;
-  font-size: large;
-  animation: fadeIn 1.2s ease forwards;
-}
+
 
 @keyframes fadeIn {
   to {
@@ -237,11 +235,9 @@ body {
   gap: 1rem;
 }
 
-.header-logo {
-  width: 200px;
+.logo-homepage {
+  width: 75%;
   height: auto;
-  filter: brightness(0) invert(1);
-  object-fit: contain;
 }
 
 .logo {
