@@ -15,7 +15,7 @@ export const StickmanPage = () => {
   };
 
   return (
-    <>
+    <div className="container">
       <Header />
       <div className="stickman-page">
         <h2 className="zvednuto-title">Kategorie</h2>
@@ -36,6 +36,6 @@ export const StickmanPage = () => {
           </button>
         </div>
       </div>
-    </>
+    </div>
   );
 };

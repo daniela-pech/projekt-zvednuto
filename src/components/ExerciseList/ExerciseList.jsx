@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { supabase } from '../SupabaseClient/SupabaseClient';
-import './ExcerciseList.css';
+import './ExerciseList.css';
 
 export const ExerciseList = ({ category, subcategory, resistanceType }) => {
   const [exercises, setExercises] = useState([]);
@@ -29,22 +29,24 @@ export const ExerciseList = ({ category, subcategory, resistanceType }) => {
   if (!category || !subcategory || !resistanceType) return null;
 
   return (
-    <ul className="exercise-list">
-      {exercises.map((cvik) => (
-        <li key={cvik.id}>
-          <Link to={`/cvik/${cvik.id}`}>
-            <h3>{cvik.name}</h3>
-          </Link>
-          <p>{cvik.description}</p>
-          {cvik.image_url && (
-            <img
-              src={cvik.image_url}
-              alt={cvik.name}
-              className="excercise-image"
-            />
-          )}
-        </li>
-      ))}
-    </ul>
+    <div className="container">
+      <ul className="exercise-list">
+        {exercises.map((exercise) => (
+          <li key={exercise.id}>
+            <Link to={`/exercise/${exercise.id}`}>
+              <h3>{exercise.name}</h3>
+            </Link>
+            <p>{exercise.description}</p>
+            {exercise.image_url && (
+              <img
+                src={exercise.image_url}
+                alt={exercise.name}
+                className="exercise-image"
+              />
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };

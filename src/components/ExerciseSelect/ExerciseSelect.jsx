@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react';
-import { ExerciseList } from '../ExcerciseList/ExcerciseList';
+import { ExerciseList } from '../ExerciseList/ExerciseList';
 import { supabase } from '../SupabaseClient/SupabaseClient';
 
-export const ExcerciseSelect = ({ kategorie }) => {
-  const [category] = useState(kategorie);
+export const ExerciseSelect = ({ category }) => {
   const [subcategory, setSubcategory] = useState('');
-  const [subcategoryOptions, setSubcategoryOptions] = useState([]);
+  const [subcategories, setSubcategories] = useState([]);
   const [resistanceType, setResistanceType] = useState('');
   const [resistanceOptions, setResistanceOptions] = useState([]);
 
@@ -13,21 +12,21 @@ export const ExcerciseSelect = ({ kategorie }) => {
   useEffect(() => {
     const fetchSubcategories = async () => {
       if (!category) {
-        setSubcategoryOptions([]);
+        setSubcategories([]);
         return;
       }
 
-      // ze supabase se vezme tabulka excercise a z ní sloupec subcathegory a dá se podmínka category
+      // ze supabase se vezme tabulka exercise a z ní sloupec subcathegory a dá se podmínka category
       const { data } = await supabase
         .from('exercises')
         .select('subcategory')
         .eq('category', category);
 
-      // smažu duplicity a ulloží to do subcategoryOptions
-      const smazatDuplicity = [
+      // smažu duplicity a ulloží to do subcategories
+      const subcategoriesWithoutDuplicities = [
         ...new Set(data.map((item) => item.subcategory)),
       ];
-      setSubcategoryOptions(smazatDuplicity);
+      setSubcategories(subcategoriesWithoutDuplicities);
     };
 
     fetchSubcategories();
@@ -53,10 +52,10 @@ export const ExcerciseSelect = ({ kategorie }) => {
   }, [category, subcategory]);
 
   return (
-    <div className="e">
+    <div className="container">
       <h1>{category}</h1>
-
-      <form className="excercise-form">
+      <br />
+      <form className="exercise-form">
         <label>
           VYBER PARTII:
           <select
@@ -67,9 +66,9 @@ export const ExcerciseSelect = ({ kategorie }) => {
             }}
           >
             <option value="">-- Vyberte --</option>
-            {subcategoryOptions.map((podkategorie) => (
-              <option key={podkategorie} value={podkategorie}>
-                {podkategorie}
+            {subcategories.map((item) => (
+              <option key={item} value={item}>
+                {item}
               </option>
             ))}
           </select>
@@ -92,7 +91,7 @@ export const ExcerciseSelect = ({ kategorie }) => {
           </label>
         )}
       </form>
-
+      <br />
       <ExerciseList
         category={category}
         subcategory={subcategory}

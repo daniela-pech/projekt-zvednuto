@@ -1,12 +1,12 @@
 import { Header } from '../Header/Header';
-import { ExcerciseSelect } from '../ExcerciseSelect/ExcerciseSelect';
+import { ExerciseSelect } from '../ExerciseSelect/ExerciseSelect';
 import './UpperBody.css';
 
 export const UpperBody = () => {
   return (
-    <>
+    <div className="container">
       <Header />
-      <ExcerciseSelect kategorie="Horní část těla" />
-    </>
+      <ExerciseSelect category="Horní část těla" />
+    </div>
   );
 };
