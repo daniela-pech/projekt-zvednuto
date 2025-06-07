@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { StickmanBack } from '../StickmanBack/StickmanBack';
-import { StickmanFront } from '../SticmanFront/StickmanFront';
+import { StickmanFront } from '../StickmanFront/StickmanFront';
 import './StickmanPage.css';
 
 export const StickmanPage = () => {
