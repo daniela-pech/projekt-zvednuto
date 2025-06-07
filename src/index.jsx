@@ -6,10 +6,6 @@ import './global.css';
 const App = () => {
   return (
     <div>
-      <h1>Zvednuto</h1>
-      <nav>
-        <Link to="/">Domů</Link>
-      </nav>
       <HomePage />
     </div>
   )

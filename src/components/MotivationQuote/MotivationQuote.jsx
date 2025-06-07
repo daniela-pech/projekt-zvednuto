@@ -1,3 +1,5 @@
+import './MotivationQuote.css';
+
 const quotes = [
     "Lift it. Text it. Love it.",
     "Každý rep je krok blíž k cíli.",

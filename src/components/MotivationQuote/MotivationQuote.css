@@ -1,0 +1,12 @@
+.citaty {
+    font-style: italic;
+    margin: 4rem 0;
+    opacity: 0;
+    font-size: large;
+    animation: fadeIn 1.2s ease forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
