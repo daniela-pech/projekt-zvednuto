@@ -1,8 +1,10 @@
+import { Link } from 'react-router-dom';
+
 export const StickmanFront = ({ selectedPart, handleClick, isVisible }) => {
-    if (!isVisible) return null;
-  
-    return (
-        <div className="stickman">
+  if (!isVisible) return null;
+
+  return (
+    <div className="stickman">
       <svg
         width="200"
         height="500"
@@ -34,18 +36,20 @@ export const StickmanFront = ({ selectedPart, handleClick, isVisible }) => {
           onClick={() => handleClick('left-arm')}
           className={selectedPart === 'left-arm' ? 'selected' : ''}
         />
-        <rect
-          x="134"
-          y="100"
-          width="16"
-          height="60"
-          rx="5"
-          stroke="white"
-          strokeWidth="4"
-          fill="none"
-          onClick={() => handleClick('right-arm')}
-          className={selectedPart === 'right-arm' ? 'selected' : ''}
-        />
+        <Link to="upper">
+          <rect
+            x="134"
+            y="100"
+            width="16"
+            height="60"
+            rx="5"
+            stroke="white"
+            strokeWidth="4"
+            fill="none"
+            onClick={() => handleClick('right-arm')}
+            className={selectedPart === 'right-arm' ? 'selected' : ''}
+          />
+        </Link>
         <rect
           x="75"
           y="100"
@@ -95,7 +99,6 @@ export const StickmanFront = ({ selectedPart, handleClick, isVisible }) => {
           className={selectedPart === 'right-leg' ? 'selected' : ''}
         />
       </svg>
-      </div>
-    );
-  };
-  
+    </div>
+  );
+};

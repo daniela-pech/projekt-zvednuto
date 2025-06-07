@@ -23,7 +23,7 @@ const router = createBrowserRouter([
     element: <StickmanPage />,
   },
   {
-    path: 'upper',
+    path: '/stickman/upper',
     element: <UpperBody />,
   },
 ]);
