@@ -1,10 +1,10 @@
 import './Button.css';
 
-export const Button = ({ text, color }) => {
+export const Button = ({ text, color, onClick }) => {
 
     return (
       <div>
-        <button className="button">
+        <button onClick={onClick} className="button">
           {text}
         </button>
       </div>
