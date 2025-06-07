@@ -1,13 +1,12 @@
-import './Core.css';
 import { Header } from '../Header/Header';
+import { ExcerciseSelect } from '../ExcerciseSelect/ExcerciseSelect';
+import './Core.css';
 
 export const Core = () => {
   return (
     <>
       <Header />
-      <main>
-        <p>Core</p>
-      </main>
+      <ExcerciseSelect kategorie={'Střed těla'} />
     </>
   );
 };

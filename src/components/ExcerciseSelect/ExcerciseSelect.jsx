@@ -1,0 +1,105 @@
+import { useState, useEffect } from 'react';
+import { ExerciseList } from '../ExcerciseList/ExcerciseList';
+import { supabase } from '../SupabaseClient/SupabaseClient';
+
+export const ExcerciseSelect = ({ kategorie }) => {
+  const [category] = useState(kategorie);
+  const [subcategory, setSubcategory] = useState('');
+  const [subcategoryOptions, setSubcategoryOptions] = useState([]);
+  const [resistanceType, setResistanceType] = useState('');
+  const [resistanceOptions, setResistanceOptions] = useState([]);
+
+  // vypíše podkategorie ze Supabase při změně kategorie
+  useEffect(() => {
+    const fetchSubcategories = async () => {
+      if (!category) {
+        setSubcategoryOptions([]);
+        return;
+      }
+
+      // ze supabase se vezme tabulka excercise a z ní sloupec subcathegory a dá se podmínka category
+      const { data } = await supabase
+        .from('exercises')
+        .select('subcategory')
+        .eq('category', category);
+
+      // smažu duplicity a ulloží to do subcategoryOptions
+      const smazatDuplicity = [
+        ...new Set(data.map((item) => item.subcategory)),
+      ];
+      setSubcategoryOptions(smazatDuplicity);
+    };
+
+    fetchSubcategories();
+  }, [category]);
+
+  // vypíše typy odporu (vybavení)
+  useEffect(() => {
+    const fetchResistanceOptions = async () => {
+      const { data } = await supabase
+        .from('exercises')
+        .select('resistance_type')
+        .eq('category', category)
+        .eq('subcategory', subcategory);
+
+      const resistanceList = [
+        ...new Set(data.map((item) => item.resistance_type)),
+      ];
+      setResistanceOptions(resistanceList);
+      setResistanceType('');
+    };
+
+    fetchResistanceOptions();
+  }, [category, subcategory]);
+
+  return (
+    <div className="e">
+      <h1>{category}</h1>
+
+      <form className="excercise-form">
+        <label>
+          VYBER PARTII:
+          <select
+            value={subcategory}
+            onChange={(event) => {
+              setSubcategory(event.target.value);
+              setResistanceType('');
+            }}
+          >
+            <option value="">-- Vyberte --</option>
+            {subcategoryOptions.map((podkategorie) => (
+              <option key={podkategorie} value={podkategorie}>
+                {podkategorie}
+              </option>
+            ))}
+          </select>
+        </label>
+
+        {resistanceOptions.length > 0 && (
+          <label>
+            Vybavení:
+            <select
+              value={resistanceType}
+              onChange={(e) => setResistanceType(e.target.value)}
+            >
+              <option value="">-- Vyberte --</option>
+              {resistanceOptions.map((odpor) => (
+                <option key={odpor} value={odpor}>
+                  {odpor}
+                </option>
+              ))}
+            </select>
+          </label>
+        )}
+      </form>
+
+      <ExerciseList
+        category={category}
+        subcategory={subcategory}
+        resistanceType={resistanceType}
+      />
+    </div>
+  );
+};
+
+//  {resistanceOptions.length > 0 && - druhý select se vypíše jenom pokud je v prvním něco vybranýho
