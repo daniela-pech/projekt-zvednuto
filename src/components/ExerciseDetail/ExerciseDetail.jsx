@@ -1,45 +1,74 @@
-import { useParams, Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { supabase } from '../SupabaseClient/SupabaseClient';
-import { Button } from '../Button/Button';
-import { Header } from '../Header/Header';
-import './ExerciseDetail.css';
+import { useParams, Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { supabase } from "../SupabaseClient/SupabaseClient";
+import { Button } from "../Button/Button";
+import { Header } from "../Header/Header";
+import "./ExerciseDetail.css";
 
 export const ExerciseDetail = () => {
   const { id } = useParams();
   const [exercise, setExercise] = useState(null);
-  const [savedExercises, setSavedExercises] = useState([]);
+  const [workouts, setWorkouts] = useState([]);
+  const [savedExercises] = useState([]);
+
+  const fetchWorkouts = async () => {
+    const { data } = await supabase
+      .from("workouts")
+      .select("*")
+      .eq("finished", false);
+
+    setWorkouts(data);
+  };
 
   useEffect(() => {
     const fetchExercise = async () => {
       const { data } = await supabase
-        .from('exercises')
-        .select('*')
-        .eq('id', id)
+        .from("exercises")
+        .select("*")
+        .eq("id", id)
         .single();
 
       setExercise(data);
     };
 
     fetchExercise();
-  }, [id]);
-
-  useEffect(() => {
-    const stored = localStorage.getItem('zvednuto-vyber');
-    if (stored) {
-      setSavedExercises(JSON.parse(stored));
-    }
+    fetchWorkouts();
   }, []);
 
-  const handleAddExercise = () => {
-    const updated = [...savedExercises, exercise];
-    localStorage.setItem('zvednuto-vyber', JSON.stringify(updated));
-    setSavedExercises(updated);
+  const handleAddExercise = async () => {
+    const updated = [...savedExercises, { name: exercise.name, sets: [] }];
+    if (workouts.length === 0) {
+      const { error } = await supabase.from("workouts").insert([
+        {
+          title: "Nový trénink",
+          date: new Date().toISOString().slice(0, 10),
+          exercises: [{ id: exercise.id, name: exercise.name }],
+          created: new Date().toISOString(),
+          finished: false,
+        },
+      ]);
+    } else {
+      const { data, error } = await supabase
+        .from("workouts")
+        .update({
+          exercises: [
+            ...workouts[0].exercises,
+            { id: exercise.id, name: exercise.name },
+          ],
+        })
+        .eq("id", workouts[0].id);
+    }
+    fetchWorkouts();
   };
 
-  const handleReset = () => {
-    localStorage.removeItem('zvednuto-vyber');
-    setSavedExercises([]);
+  const handleReset = async () => {
+    const { error } = await supabase
+      .from("workouts")
+      .update({ exercises: [] })
+      .eq("id", workouts[0].id);
+
+      if (error) return;
+      fetchWorkouts();
   };
 
   if (!exercise) return <p>Načítání...</p>;
@@ -49,8 +78,8 @@ export const ExerciseDetail = () => {
       <Header />
 
       <h2>{exercise.name}</h2>
-      <br />
       <p>{exercise.description}</p>
+
       {exercise.image_url && (
         <img
           src={exercise.image_url}
@@ -59,25 +88,23 @@ export const ExerciseDetail = () => {
         />
       )}
 
-      <Button text="👌" onClick={handleAddExercise} />
-
-      {savedExercises.length > 0 && (
+      <Button text="Přidat do plánu" onClick={handleAddExercise} />
+      {workouts.length > 0 && workouts[0].exercises && (
         <div className="selected-exercises">
-          <h4>Plánované cvičení:</h4>
+          <h4>Plánované cviky:</h4>
           <ul>
-            {savedExercises.map((ex, index) => (
+            {workouts[0].exercises.map((ex, index) => (
               <li key={index}>{ex.name}</li>
             ))}
           </ul>
         </div>
       )}
+
       <Link to="/stickman">
-        <Button text="+ Přidat jiný cvik" />
+        <Button text="+ Přidat jinou partii" />
       </Link>
-      <Link to="/workoutpage">
-        <Button text="Hotovo" />
-      </Link>
-      <Button text="Reset" onClick={handleReset} />
+      <Button text="Uložit trénink" />
+      <Button text="Vymazat vybraný trénink" onClick={handleReset} />
     </div>
   );
 };
