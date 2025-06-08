@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { supabase } from "../SupabaseClient/SupabaseClient";
 import "./WorkoutSummary.css";
+import { Header } from "../Header/Header";
 
 export const WorkoutSummary = () => {
   const [workouts, setWorkouts] = useState([]);
@@ -22,7 +23,14 @@ export const WorkoutSummary = () => {
   }
 
   return (
-    <div className="workout-summary">
+    <div className="container">
+      <Header />
+      <form className="workout-form">
+        <input type="text" placeholder="Zadej název tréninku" />
+        <br />
+        <input type="date" name="workoutDate" />
+      </form>
+
       <h2 className="summary-title">Skvělá práce!</h2>
       <p className="summary-all">
         Dnes jsi zvedl <strong>{} kg!</strong>
