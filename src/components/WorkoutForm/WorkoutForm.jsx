@@ -1,16 +1,17 @@
-import React, { useState } from 'react';
-import { Header } from '../Header/Header';
+import React, { useState } from "react";
+import { Header } from "../Header/Header";
+import { Link } from "react-router-dom";
 
 export const WorkoutForm = () => {
   const [workout, setWorkout] = useState({
-    name: 'Bench',
-    sets: [{ kg: '0', reps: '0' }],
+    name: "Bench",
+    sets: [{ kg: "0", reps: "0" }],
   });
 
   const handleSetClick = () => {
     setWorkout({
       name: workout.name,
-      sets: [...workout.sets, { kg: '0', reps: '0' }],
+      sets: [...workout.sets, { kg: "0", reps: "0" }],
     });
   };
 
@@ -40,13 +41,13 @@ export const WorkoutForm = () => {
             value={set.kg}
             type="number"
             placeholder="Váha"
-            onChange={(e) => updateSetProperty(index, 'kg', e.target.value)}
+            onChange={(e) => updateSetProperty(index, "kg", e.target.value)}
           />
           <input
             value={set.reps}
             type="number"
             placeholder="Počet opakování"
-            onChange={(e) => updateSetProperty(index, 'reps', e.target.value)}
+            onChange={(e) => updateSetProperty(index, "reps", e.target.value)}
           />
         </div>
       ))}
@@ -54,6 +55,7 @@ export const WorkoutForm = () => {
       <br />
       <button>Přidat jiný cvik</button>
       <br />
+
       <button>HOTOVO</button>
     </div>
   );
