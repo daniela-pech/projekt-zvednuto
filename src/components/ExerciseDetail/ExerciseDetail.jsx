@@ -1,9 +1,9 @@
-import { useParams, Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { supabase } from '../SupabaseClient/SupabaseClient';
-import { Button } from '../Button/Button';
-import { Header } from '../Header/Header';
-import './ExerciseDetail.css';
+import { useParams, Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { supabase } from "../SupabaseClient/SupabaseClient";
+import { Button } from "../Button/Button";
+import { Header } from "../Header/Header";
+import "./ExerciseDetail.css";
 
 export const ExerciseDetail = () => {
   const { id } = useParams();
@@ -12,9 +12,9 @@ export const ExerciseDetail = () => {
 
   const fetchWorkouts = async () => {
     const { data } = await supabase
-      .from('workouts')
-      .select('*')
-      .eq('finished', false);
+      .from("workouts")
+      .select("*")
+      .eq("finished", false);
 
     setWorkouts(data);
   };
@@ -22,9 +22,9 @@ export const ExerciseDetail = () => {
   useEffect(() => {
     const fetchExercise = async () => {
       const { data } = await supabase
-        .from('exercises')
-        .select('*')
-        .eq('id', id)
+        .from("exercises")
+        .select("*")
+        .eq("id", id)
         .single();
 
       setExercise(data);
@@ -35,11 +35,10 @@ export const ExerciseDetail = () => {
   }, []);
 
   const handleAddExercise = async () => {
-    const updated = [...savedExercises, { name: exercise.name, sets: [] }];
     if (workouts.length === 0) {
-      const { error } = await supabase.from('workouts').insert([
+      const { error } = await supabase.from("workouts").insert([
         {
-          title: 'Nový trénink',
+          title: "Nový trénink",
           date: new Date().toISOString().slice(0, 10),
           exercises: [{ id: exercise.id, name: exercise.name }],
           created: new Date().toISOString(),
@@ -48,23 +47,23 @@ export const ExerciseDetail = () => {
       ]);
     } else {
       const { data, error } = await supabase
-        .from('workouts')
+        .from("workouts")
         .update({
           exercises: [
             ...workouts[0].exercises,
             { id: exercise.id, name: exercise.name },
           ],
         })
-        .eq('id', workouts[0].id);
+        .eq("id", workouts[0].id);
     }
     fetchWorkouts();
   };
 
   const handleReset = async () => {
     const { error } = await supabase
-      .from('workouts')
+      .from("workouts")
       .delete()
-      .eq('id', workouts[0].id);
+      .eq("id", workouts[0].id);
 
     if (error) return;
     fetchWorkouts();

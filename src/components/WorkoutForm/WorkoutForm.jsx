@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Header } from "../Header/Header";
+import { supabase } from "../SupabaseClient/SupabaseClient";
 import { Link } from "react-router-dom";
 
 export const WorkoutForm = () => {
@@ -7,12 +8,57 @@ export const WorkoutForm = () => {
     name: "Bench",
     sets: [{ kg: "0", reps: "0" }],
   });
+  const [workouts, setWorkouts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [isWorkoutFinished, setIsWorkoutFinished] = useState(false);
 
-  const handleSetClick = () => {
+  const fetchWorkouts = async () => {
+    const { data } = await supabase
+      .from("workouts")
+      .select("*")
+      .eq("finished", false);
+    // console.log(data[0]);
+    setWorkouts(data[0]);
+    const workoutsWithoutSets = data[0].exercises.filter(
+      (item) => item.sets === undefined,
+    );
+
+    if (workoutsWithoutSets.length === 0) {
+      setIsWorkoutFinished(true);
+    } else {
+      setWorkout({
+        name: workoutsWithoutSets[0].name,
+        sets: [{ kg: "0", reps: "0" }],
+      });
+    }
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    fetchWorkouts();
+  }, []);
+
+  if (loading && isWorkoutFinished === false) {
+    return <p>Načítám tvoje zvednuté kilíčka... 🏋️‍♀️</p>;
+  }
+
+  const handleSetClick = async () => {
+    const updatedWorkouts = workouts.exercises.map((exercise) =>
+      exercise.name === workout.name ? workout : exercise,
+    );
+    const { data, error } = await supabase
+      .from("workouts")
+      .update({
+        exercises: updatedWorkouts,
+      })
+      .eq("id", workouts.id);
+
     setWorkout({
       name: workout.name,
       sets: [...workout.sets, { kg: "0", reps: "0" }],
     });
+
+    console.log(workout);
   };
 
   const updateSetProperty = (index, key, value) => {
@@ -27,7 +73,7 @@ export const WorkoutForm = () => {
     });
   };
 
-  console.log(workout);
+  //console.log(workout);
 
   return (
     <div className="container">
@@ -36,7 +82,7 @@ export const WorkoutForm = () => {
 
       {workout.sets.map((set, index) => (
         <div key={index}>
-          <div>{index + 1}</div>
+          <div>{index + 1}. série</div>
           <input
             value={set.kg}
             type="number"
@@ -51,12 +97,18 @@ export const WorkoutForm = () => {
           />
         </div>
       ))}
+
       <button onClick={handleSetClick}>Přidat další sérii</button>
+
       <br />
-      <button>Přidat jiný cvik</button>
+      {!isWorkoutFinished && (
+        <button onClick={fetchWorkouts}>Přidat další cvik</button>
+      )}
       <br />
 
-      <button>HOTOVO</button>
+      <Link to="/workoutsummary">
+        <button>HOTOVO</button>
+      </Link>
     </div>
   );
 };
