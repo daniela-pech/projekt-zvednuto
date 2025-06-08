@@ -1,15 +1,16 @@
-import { createRoot } from 'react-dom/client';
-import { HomePage } from './pages/HomePage/HomePage';
-import { createBrowserRouter, RouterProvider, Link } from 'react-router-dom';
-import './global.css';
-import { StickmanPage } from './components/StickmanPage/StickmanPage';
-import { UpperBody } from './components/UpperBody/UpperBody';
-import { LowerBody } from './components/LowerBody/LowerBody';
-import { Core } from './components/Core/Core';
-import { ExerciseList } from './components/ExerciseList/ExerciseList';
-import { ExerciseSelect } from './components/ExerciseSelect/ExerciseSelect';
-import { ExerciseDetail } from './components/ExerciseDetail/ExerciseDetail';
-import { WorkoutPage } from './components/WorkoutPage/WorkoutPage';
+import { createRoot } from "react-dom/client";
+import { HomePage } from "./pages/HomePage/HomePage";
+import { createBrowserRouter, RouterProvider, Link } from "react-router-dom";
+import "./global.css";
+import { StickmanPage } from "./components/StickmanPage/StickmanPage";
+import { UpperBody } from "./components/UpperBody/UpperBody";
+import { LowerBody } from "./components/LowerBody/LowerBody";
+import { Core } from "./components/Core/Core";
+import { ExerciseList } from "./components/ExerciseList/ExerciseList";
+import { ExerciseSelect } from "./components/ExerciseSelect/ExerciseSelect";
+import { ExerciseDetail } from "./components/ExerciseDetail/ExerciseDetail";
+import { WorkoutPage } from "./components/WorkoutPage/WorkoutPage";
+import { WorkoutSummary } from "./components/WorkoutSummary/WorkoutSummary";
 
 const App = () => {
   return (
@@ -21,36 +22,40 @@ const App = () => {
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <App />,
   },
   {
-    path: 'stickman',
+    path: "stickman",
     element: <StickmanPage />,
   },
   {
-    path: '/upper',
+    path: "/upper",
     element: <UpperBody />,
   },
   {
-    path: '/lower',
+    path: "/lower",
     element: <LowerBody />,
   },
   {
-    path: '/core',
+    path: "/core",
     element: <Core />,
   },
 
   {
-    path: 'exercise/:id',
+    path: "exercise/:id",
     element: <ExerciseDetail />,
   },
   {
-    path: 'workoutpage',
+    path: "workoutpage",
     element: <WorkoutPage />,
+  },
+  {
+    path: "workoutsummary",
+    element: <WorkoutSummary />,
   },
 ]);
 
-createRoot(document.querySelector('#app')).render(
-  <RouterProvider router={router} />,
+createRoot(document.querySelector("#app")).render(
+  <RouterProvider router={router} />
 );
