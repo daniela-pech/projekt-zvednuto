@@ -9,6 +9,7 @@ import { Core } from './components/Core/Core';
 import { ExerciseList } from './components/ExerciseList/ExerciseList';
 import { ExerciseSelect } from './components/ExerciseSelect/ExerciseSelect';
 import { ExerciseDetail } from './components/ExerciseDetail/ExerciseDetail';
+import { WorkoutForm } from './components/WorkoutForm/WorkoutForm';
 
 const App = () => {
   return (
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
   {
     path: 'exercise/:id',
     element: <ExerciseDetail />,
+  },
+  {
+    path: '/workoutform',
+    element: <WorkoutForm />,
   },
 ]);
 
