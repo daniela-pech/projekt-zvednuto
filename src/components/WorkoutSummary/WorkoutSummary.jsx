@@ -76,7 +76,7 @@ export const WorkoutSummary = () => {
           <h3 className="exercise-name">{workout.title}</h3>
         </div>
       ))}
-      <Button text="uložit" onClick={saveWorkout} />
+      <Button text="uložit" onClick={saveWorkout} color="#236E4C" />
     </div>
   );
 };

@@ -1,17 +1,19 @@
-@media (max-width: 480px) {
-    .button {
-      width: 90%;
-    }
-  }
-  
+.button {
+  width: 300px;
+  height: 55px;
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 15px;
+  font-weight: bold;
+  font-size: 1.25rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  color: white
+}
+
+@media (max-width: 400px) {
   .button {
-  
-    margin-top: 1rem;
-    padding: 0.75rem;
-    border-radius: 8px;
-    font-weight: bold;
-    font-size: 1rem;
-    cursor: pointer;
-    text-transform: uppercase;
+    width: 250px;
+    height: 60px;
   }
-  
+}

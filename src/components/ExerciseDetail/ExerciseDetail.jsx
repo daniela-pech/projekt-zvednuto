@@ -75,7 +75,7 @@ export const ExerciseDetail = () => {
     <div className="container">
       <Header />
 
-      <h2>{exercise.name}</h2>
+      <h1>{exercise.name}</h1>
       <p>{exercise.description}</p>
 
       {exercise.image_url && (
@@ -86,10 +86,14 @@ export const ExerciseDetail = () => {
         />
       )}
 
-      <Button text="Přidat do plánu" onClick={handleAddExercise} />
+      <Button
+        text="Přidat do plánu"
+        onClick={handleAddExercise}
+        color="#236E4C"
+      />
       {workouts.length > 0 && workouts[0].exercises && (
         <div className="selected-exercises">
-          <h4>Plánované cviky:</h4>
+          <h2>Plánované cviky:</h2>
           <ul>
             {workouts[0].exercises.map((ex, index) => (
               <li key={index}>{ex.name}</li>
@@ -99,12 +103,12 @@ export const ExerciseDetail = () => {
       )}
 
       <Link to="/stickman">
-        <Button text="+ Přidat jinou partii" />
+        <Button text="Přidat jinou partii" color="#767676" />
       </Link>
       <Link to="/workoutform">
-        <Button text="Uložit trénink" />
+        <Button text="Uložit trénink" color="#767676" />
       </Link>
-      <Button text="Vymazat vybraný trénink" onClick={handleReset} />
+      <Button text="Reset" onClick={handleReset} color="#D30F0F" />
     </div>
   );
 };

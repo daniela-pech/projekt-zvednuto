@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Header } from "../Header/Header";
 import { supabase } from "../SupabaseClient/SupabaseClient";
 import { Link } from "react-router-dom";
+import "./WorkoutForm.css";
+import { Button } from "../Button/Button";
 
 export const WorkoutForm = () => {
   const [workout, setWorkout] = useState({
@@ -17,7 +19,6 @@ export const WorkoutForm = () => {
       .from("workouts")
       .select("*")
       .eq("finished", false);
-    // console.log(data[0]);
     setWorkouts(data[0]);
     const workoutsWithoutSets = data[0].exercises.filter(
       (item) => item.sets === undefined,
@@ -73,15 +74,13 @@ export const WorkoutForm = () => {
     });
   };
 
-  //console.log(workout);
-
   return (
     <div className="container">
       <Header />
-      <h2>{workout.name}</h2>
+      <h1>{workout.name}</h1>
 
       {workout.sets.map((set, index) => (
-        <div key={index}>
+        <div key={index} className="workout-form">
           <div>{index + 1}. série</div>
           <input
             value={set.kg}
@@ -98,16 +97,24 @@ export const WorkoutForm = () => {
         </div>
       ))}
 
-      <button onClick={handleSetClick}>Přidat další sérii</button>
+      <Button
+        text="Přidat další sérii"
+        onClick={handleSetClick}
+        color="#767676"
+      />
 
       <br />
       {!isWorkoutFinished && (
-        <button onClick={fetchWorkouts}>Přidat další cvik</button>
+        <Button
+          text="Přidat další cvik"
+          onClick={fetchWorkouts}
+          color="#767676"
+        />
       )}
       <br />
 
       <Link to="/workoutsummary">
-        <button>HOTOVO</button>
+        <Button text="hotovo" color="#236E4C" />
       </Link>
     </div>
   );

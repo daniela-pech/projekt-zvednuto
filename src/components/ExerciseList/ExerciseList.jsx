@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { supabase } from '../SupabaseClient/SupabaseClient';
-import './ExerciseList.css';
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { supabase } from "../SupabaseClient/SupabaseClient";
+import "./ExerciseList.css";
 
 export const ExerciseList = ({ category, subcategory, resistanceType }) => {
   const [exercises, setExercises] = useState([]);
@@ -14,11 +14,11 @@ export const ExerciseList = ({ category, subcategory, resistanceType }) => {
       }
 
       const { data } = await supabase
-        .from('exercises')
-        .select('id, name, description, image_url')
-        .eq('category', category)
-        .eq('subcategory', subcategory)
-        .eq('resistance_type', resistanceType);
+        .from("exercises")
+        .select("id, name, description, image_url")
+        .eq("category", category)
+        .eq("subcategory", subcategory)
+        .eq("resistance_type", resistanceType);
 
       setExercises(data);
     };
@@ -36,14 +36,6 @@ export const ExerciseList = ({ category, subcategory, resistanceType }) => {
             <Link to={`/exercise/${exercise.id}`}>
               <h3>{exercise.name}</h3>
             </Link>
-            <p>{exercise.description}</p>
-            {exercise.image_url && (
-              <img
-                src={exercise.image_url}
-                alt={exercise.name}
-                className="exercise-image"
-              />
-            )}
           </li>
         ))}
       </ul>

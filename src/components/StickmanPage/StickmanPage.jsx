@@ -1,8 +1,9 @@
-import { useState } from 'react';
-import { StickmanBack } from '../StickmanBack/StickmanBack';
-import { StickmanFront } from '../StickmanFront/StickmanFront';
-import './StickmanPage.css';
-import { Header } from '../Header/Header';
+import { useState } from "react";
+import { StickmanBack } from "../StickmanBack/StickmanBack";
+import { StickmanFront } from "../StickmanFront/StickmanFront";
+import "./StickmanPage.css";
+import { Header } from "../Header/Header";
+import "./StickmanPage.css";
 
 export const StickmanPage = () => {
   const [selectedPart, setSelectedPart] = useState(null);
@@ -18,7 +19,7 @@ export const StickmanPage = () => {
     <div className="container">
       <Header />
       <div className="stickman-page">
-        <h2 className="zvednuto-title">Kategorie</h2>
+        <h1 className="zvednuto-title">Kategorie</h1>
         <p>Klikni na oblast, kterou chceš dnes cvičit.</p>
         <div className="stickman-wrapper">
           <StickmanFront
@@ -31,8 +32,8 @@ export const StickmanPage = () => {
             handleClick={handleClick}
             isVisible={isBackView}
           />
-          <button className="button" onClick={toggleView}>
-            {isBackView ? 'Zobrazit přední stranu' : 'Zobrazit zadní stranu'}
+          <button className="button button-red" onClick={toggleView}>
+            {isBackView ? "ZEPŘEDU" : "ZEZADU"}
           </button>
         </div>
       </div>

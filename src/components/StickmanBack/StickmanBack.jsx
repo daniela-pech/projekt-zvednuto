@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 export const StickmanBack = ({ selectedPart, handleClick, isVisible }) => {
   if (!isVisible) return null;
@@ -13,7 +13,7 @@ export const StickmanBack = ({ selectedPart, handleClick, isVisible }) => {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           className="stickman"
-          style={{ display: 'block', margin: '0 auto' }}
+          style={{ display: "block", margin: "0 auto" }}
         >
           <circle
             cx="100"
@@ -22,8 +22,8 @@ export const StickmanBack = ({ selectedPart, handleClick, isVisible }) => {
             stroke="white"
             strokeWidth="4"
             fill="none"
-            onClick={() => handleClick('back-head')}
-            className={selectedPart === 'back-head' ? 'selected' : ''}
+            onClick={() => handleClick("back-head")}
+            className={selectedPart === "back-head" ? "selected" : ""}
           />
           <Link to="/upper">
             <rect
@@ -35,8 +35,8 @@ export const StickmanBack = ({ selectedPart, handleClick, isVisible }) => {
               stroke="white"
               strokeWidth="4"
               fill="none"
-              onClick={() => handleClick('triceps-left')}
-              className={selectedPart === 'triceps-left' ? 'selected' : ''}
+              onClick={() => handleClick("triceps-left")}
+              className={selectedPart === "triceps-left" ? "selected" : ""}
             />
           </Link>
           <Link to="/upper">
@@ -49,8 +49,8 @@ export const StickmanBack = ({ selectedPart, handleClick, isVisible }) => {
               stroke="white"
               strokeWidth="4"
               fill="none"
-              onClick={() => handleClick('triceps-right')}
-              className={selectedPart === 'triceps-right' ? 'selected' : ''}
+              onClick={() => handleClick("triceps-right")}
+              className={selectedPart === "triceps-right" ? "selected" : ""}
             />
           </Link>
           <Link to="/core">
@@ -63,8 +63,8 @@ export const StickmanBack = ({ selectedPart, handleClick, isVisible }) => {
               stroke="white"
               strokeWidth="4"
               fill="none"
-              onClick={() => handleClick('back')}
-              className={selectedPart === 'back' ? 'selected' : ''}
+              onClick={() => handleClick("back")}
+              className={selectedPart === "back" ? "selected" : ""}
             />
           </Link>
           <Link to="/lower">
@@ -77,8 +77,8 @@ export const StickmanBack = ({ selectedPart, handleClick, isVisible }) => {
               stroke="white"
               strokeWidth="4"
               fill="none"
-              onClick={() => handleClick('ham-left')}
-              className={selectedPart === 'ham-left' ? 'selected' : ''}
+              onClick={() => handleClick("ham-left")}
+              className={selectedPart === "ham-left" ? "selected" : ""}
             />
           </Link>
           <Link to="/lower">
@@ -91,8 +91,8 @@ export const StickmanBack = ({ selectedPart, handleClick, isVisible }) => {
               stroke="white"
               strokeWidth="4"
               fill="none"
-              onClick={() => handleClick('ham-right')}
-              className={selectedPart === 'ham-right' ? 'selected' : ''}
+              onClick={() => handleClick("ham-right")}
+              className={selectedPart === "ham-right" ? "selected" : ""}
             />
           </Link>
         </svg>

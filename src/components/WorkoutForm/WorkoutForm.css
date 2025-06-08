@@ -1,0 +1,21 @@
+.workout-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  font-family: 'Open Sans', sans-serif;
+  color: #ffffff;
+}
+
+.workout-form input {
+  background-color: #5c504d;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.4rem;
+  width: 100%;
+  text-align: center;
+  font-size: 1rem;
+  font-family: inherit;
+}
