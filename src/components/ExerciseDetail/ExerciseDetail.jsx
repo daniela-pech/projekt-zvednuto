@@ -1,4 +1,4 @@
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { supabase } from '../SupabaseClient/SupabaseClient';
 import { Button } from '../Button/Button';
@@ -7,7 +7,6 @@ import './ExerciseDetail.css';
 
 export const ExerciseDetail = () => {
   const { id } = useParams();
-  const navigate = useNavigate();
   const [exercise, setExercise] = useState(null);
   const [savedExercises, setSavedExercises] = useState([]);
 
@@ -64,7 +63,7 @@ export const ExerciseDetail = () => {
 
       {savedExercises.length > 0 && (
         <div className="selected-exercises">
-          <h4>Vybrané cviky:</h4>
+          <h4>Plánované cvičení:</h4>
           <ul>
             {savedExercises.map((ex, index) => (
               <li key={index}>{ex.name}</li>
@@ -73,12 +72,12 @@ export const ExerciseDetail = () => {
         </div>
       )}
       <Link to="/stickman">
-        <Button text="+ Přidat cvik" />
+        <Button text="+ Přidat jiný cvik" />
       </Link>
       <Link to="/workoutpage">
         <Button text="Hotovo" />
       </Link>
-      <Button text="Začít znovu" onClick={handleReset} />
+      <Button text="Reset" onClick={handleReset} />
     </div>
   );
 };
