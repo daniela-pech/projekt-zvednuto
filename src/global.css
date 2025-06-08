@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap");
 
 /* ======= ZÁKLAD ======= */
 
@@ -10,7 +9,7 @@
 }
 
 html {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 .container {
@@ -21,25 +20,24 @@ html {
   flex-direction: column;
   align-items: center;
   text-align: center;
-
+  background-color: #2d231e;
 }
 
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
   color: white;
   padding: 1rem;
   background-color: #2d231e;
-  background-image: url('.pages/img/DesktopNew.PNG');
+  background-image: url("/pages/img/Background.JPG");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  width: 300px;
-  height: 400px;
+  min-height: 100vh;
+  width: 100%;
   margin: 0 auto;
 }
 
 /* ======= HEADER ======= */
-
 
 .app-header button {
   background: none;
@@ -83,7 +81,6 @@ body {
   margin: 0 auto;
 }
 
-
 /* ======= BUTTONS ======= */
 @media (max-width: 480px) {
   .btns {
@@ -105,7 +102,7 @@ body {
 }
 
 .btns.stats {
-  background-color: #236E4C;
+  background-color: #236e4c;
   color: white;
   font-size: large;
   max-width: 100%;
@@ -117,7 +114,7 @@ body {
 }
 
 .btns.start {
-  background-color: #D30F0F;
+  background-color: #d30f0f;
   color: white;
   font-size: large;
   width: 100%;
@@ -142,7 +139,7 @@ body {
   margin-bottom: 1rem;
   font-size: 1.1rem;
   text-transform: uppercase;
-  color: #236E4C;
+  color: #236e4c;
 }
 
 .btns.stats:hover {
@@ -170,8 +167,6 @@ body {
   transform: scale(1.1);
   transition: all 0.2s ease;
 }
-
-
 
 @keyframes fadeIn {
   to {
