@@ -25,7 +25,7 @@ export const StickmanFront = ({ selectedPart, handleClick, isVisible }) => {
             onClick={() => handleClick('head')}
             className={selectedPart === 'head' ? 'selected' : ''}
           />
-          <Link to="upper">
+          <Link to="/upper">
             <rect
               x="50"
               y="100"
@@ -39,7 +39,7 @@ export const StickmanFront = ({ selectedPart, handleClick, isVisible }) => {
               className={selectedPart === 'left-arm' ? 'selected' : ''}
             />
           </Link>
-          <Link to="upper">
+          <Link to="/upper">
             <rect
               x="134"
               y="100"
@@ -53,7 +53,7 @@ export const StickmanFront = ({ selectedPart, handleClick, isVisible }) => {
               className={selectedPart === 'right-arm' ? 'selected' : ''}
             />
           </Link>
-          <Link to="upper">
+          <Link to="/upper">
             <rect
               x="75"
               y="100"
@@ -67,7 +67,7 @@ export const StickmanFront = ({ selectedPart, handleClick, isVisible }) => {
               className={selectedPart === 'chest' ? 'selected' : ''}
             />
           </Link>
-          <Link to="core">
+          <Link to="/core">
             <rect
               x="80"
               y="140"
@@ -81,7 +81,7 @@ export const StickmanFront = ({ selectedPart, handleClick, isVisible }) => {
               className={selectedPart === 'core' ? 'selected' : ''}
             />
           </Link>
-          <Link to="lower">
+          <Link to="/lower">
             <rect
               x="75"
               y="210"
@@ -95,7 +95,7 @@ export const StickmanFront = ({ selectedPart, handleClick, isVisible }) => {
               className={selectedPart === 'left-leg' ? 'selected' : ''}
             />
           </Link>
-          <Link to="lower">
+          <Link to="/lower">
             <rect
               x="105"
               y="210"

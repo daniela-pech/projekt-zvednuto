@@ -25,7 +25,7 @@ export const StickmanBack = ({ selectedPart, handleClick, isVisible }) => {
             onClick={() => handleClick('back-head')}
             className={selectedPart === 'back-head' ? 'selected' : ''}
           />
-          <Link to="upper">
+          <Link to="/upper">
             <rect
               x="50"
               y="100"
@@ -39,7 +39,7 @@ export const StickmanBack = ({ selectedPart, handleClick, isVisible }) => {
               className={selectedPart === 'triceps-left' ? 'selected' : ''}
             />
           </Link>
-          <Link to="upper">
+          <Link to="/upper">
             <rect
               x="134"
               y="100"
@@ -53,7 +53,7 @@ export const StickmanBack = ({ selectedPart, handleClick, isVisible }) => {
               className={selectedPart === 'triceps-right' ? 'selected' : ''}
             />
           </Link>
-          <Link to="core">
+          <Link to="/core">
             <rect
               x="75"
               y="100"
@@ -67,7 +67,7 @@ export const StickmanBack = ({ selectedPart, handleClick, isVisible }) => {
               className={selectedPart === 'back' ? 'selected' : ''}
             />
           </Link>
-          <Link to="lower">
+          <Link to="/lower">
             <rect
               x="75"
               y="210"
@@ -81,7 +81,7 @@ export const StickmanBack = ({ selectedPart, handleClick, isVisible }) => {
               className={selectedPart === 'ham-left' ? 'selected' : ''}
             />
           </Link>
-          <Link to="lower">
+          <Link to="/lower">
             <rect
               x="105"
               y="210"
