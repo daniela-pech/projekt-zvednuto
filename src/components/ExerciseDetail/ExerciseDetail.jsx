@@ -35,7 +35,6 @@ export const ExerciseDetail = () => {
   }, []);
 
   const handleAddExercise = async () => {
-    const updated = [...savedExercises, { name: exercise.name, sets: [] }];
     if (workouts.length === 0) {
       const { error } = await supabase.from("workouts").insert([
         {
@@ -102,7 +101,9 @@ export const ExerciseDetail = () => {
       <Link to="/stickman">
         <Button text="+ Přidat jinou partii" />
       </Link>
-      <Button text="Uložit trénink" />
+      <Link to="/workoutform">
+        <Button text="Uložit trénink" />
+      </Link>
       <Button text="Vymazat vybraný trénink" onClick={handleReset} />
     </div>
   );

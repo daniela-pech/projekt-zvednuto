@@ -11,6 +11,7 @@ import { ExerciseSelect } from "./components/ExerciseSelect/ExerciseSelect";
 import { ExerciseDetail } from "./components/ExerciseDetail/ExerciseDetail";
 import { WorkoutPage } from "./components/WorkoutPage/WorkoutPage";
 import { WorkoutSummary } from "./components/WorkoutSummary/WorkoutSummary";
+import { WorkoutForm } from "./components/WorkoutForm/WorkoutForm";
 
 const App = () => {
   return (
@@ -47,15 +48,19 @@ const router = createBrowserRouter([
     element: <ExerciseDetail />,
   },
   {
-    path: "workoutpage",
+    path: "/workoutform",
+    element: <WorkoutForm />,
+  },
+  {
+    path: "/workoutpage",
     element: <WorkoutPage />,
   },
   {
-    path: "workoutsummary",
+    path: "/workoutsummary",
     element: <WorkoutSummary />,
   },
 ]);
 
 createRoot(document.querySelector("#app")).render(
-  <RouterProvider router={router} />
+  <RouterProvider router={router} />,
 );
