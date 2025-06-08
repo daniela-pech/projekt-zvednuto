@@ -9,7 +9,11 @@ import { Core } from './components/Core/Core';
 import { ExerciseList } from './components/ExerciseList/ExerciseList';
 import { ExerciseSelect } from './components/ExerciseSelect/ExerciseSelect';
 import { ExerciseDetail } from './components/ExerciseDetail/ExerciseDetail';
+<<<<<<< HEAD
 import { WorkoutForm } from './components/WorkoutForm/WorkoutForm';
+=======
+import { WorkoutPage } from './components/WorkoutPage/WorkoutPage';
+>>>>>>> main
 
 const App = () => {
   return (
@@ -29,29 +33,18 @@ const router = createBrowserRouter([
     element: <StickmanPage />,
   },
   {
-    path: '/stickman/upper',
+    path: '/upper',
     element: <UpperBody />,
   },
   {
-    path: '/stickman/lower',
+    path: '/lower',
     element: <LowerBody />,
   },
   {
-    path: '/stickman/core',
+    path: '/core',
     element: <Core />,
   },
-  {
-    path: '/stickman/exerciselist',
-    element: <ExerciseList />,
-  },
-  {
-    path: '/stickman/exerciseselect',
-    element: <ExerciseSelect />,
-  },
-  {
-    path: '/stickman/exercisedetail',
-    element: <ExerciseDetail />,
-  },
+
   {
     path: 'exercise/:id',
     element: <ExerciseDetail />,
@@ -59,6 +52,10 @@ const router = createBrowserRouter([
   {
     path: '/workoutform',
     element: <WorkoutForm />,
+  },
+    {
+    path: 'workoutpage',
+    element: <WorkoutPage />,
   },
 ]);
 
