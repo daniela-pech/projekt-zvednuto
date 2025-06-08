@@ -9,7 +9,6 @@ export const ExerciseDetail = () => {
   const { id } = useParams();
   const [exercise, setExercise] = useState(null);
   const [workouts, setWorkouts] = useState([]);
-  const [savedExercises] = useState([]);
 
   const fetchWorkouts = async () => {
     const { data } = await supabase
