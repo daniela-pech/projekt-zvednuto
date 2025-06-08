@@ -64,11 +64,11 @@ export const ExerciseDetail = () => {
   const handleReset = async () => {
     const { error } = await supabase
       .from("workouts")
-      .update({ exercises: [] })
+      .delete()
       .eq("id", workouts[0].id);
 
-      if (error) return;
-      fetchWorkouts();
+    if (error) return;
+    fetchWorkouts();
   };
 
   if (!exercise) return <p>Načítání...</p>;
