@@ -76,48 +76,44 @@ export const WorkoutForm = () => {
 
   return (
     <div className="main-panel">
-    <div className="container">
-      <Header />
-      <h1>{workout.name}</h1>
+      <div className="container">
+        <Header />
+        <h1>{workout.name}</h1>
 
-      {workout.sets.map((set, index) => (
-        <div key={index} className="workout-form">
-          <div>{index + 1}. série</div>
-          <input
-            value={set.kg}
-            type="number"
-            placeholder="Váha"
-            onChange={(e) => updateSetProperty(index, "kg", e.target.value)}
+        {workout.sets.map((set, index) => (
+          <div key={index} className="workout-form">
+            <div>{index + 1}. série</div>
+            <input
+              value={set.kg}
+              type="number"
+              placeholder="Váha"
+              onChange={(e) => updateSetProperty(index, "kg", e.target.value)}
+            />
+            <input
+              value={set.reps}
+              type="number"
+              placeholder="Počet opakování"
+              onChange={(e) => updateSetProperty(index, "reps", e.target.value)}
+            />
+          </div>
+        ))}
+
+        <Button text="Uložit sérii" onClick={handleSetClick} color="#767676" />
+
+        <br />
+        {!isWorkoutFinished && (
+          <Button
+            text="Přidat další cvik"
+            onClick={fetchWorkouts}
+            color="#767676"
           />
-          <input
-            value={set.reps}
-            type="number"
-            placeholder="Počet opakování"
-            onChange={(e) => updateSetProperty(index, "reps", e.target.value)}
-          />
-        </div>
-      ))}
+        )}
+        <br />
 
-      <Button
-        text="Přidat další sérii"
-        onClick={handleSetClick}
-        color="#767676"
-      />
-
-      <br />
-      {!isWorkoutFinished && (
-        <Button
-          text="Přidat další cvik"
-          onClick={fetchWorkouts}
-          color="#767676"
-        />
-      )}
-      <br />
-
-      <Link to="/workoutsummary">
-        <Button text="hotovo" color="#236E4C" />
-      </Link>
-    </div>
+        <Link to="/workoutsummary">
+          <Button text="Ukončit workout" color="#236E4C" />
+        </Link>
+      </div>
     </div>
   );
 };
