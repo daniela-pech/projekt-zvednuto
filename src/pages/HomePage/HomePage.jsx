@@ -6,15 +6,14 @@ import "./style.css";
 
 export const HomePage = () => {
   return (
-    <div className="main-panel">
-    <div className="container">
-      <img src={logo} alt="Zvednuto logo" className="logo-homepage" />
-      <MotivationalQuote />
-      <Link to="/stickman">
-        <Button text="Začít trénink" color="#D30F0F" />
-      </Link>
-      <Button text="Statistiky" color="#236E4C" />
-    </div>
+    <div className="main-panel main-panel_hp">
+      <div className="container">
+        <img src={logo} alt="Zvednuto logo" className="logo-homepage" />
+        <MotivationalQuote />
+        <Link to="/stickman">
+          <Button text="Začít trénink" color="#D30F0F" />
+        </Link>
+      </div>
     </div>
   );
 };

@@ -38,7 +38,7 @@ export const ExerciseDetail = () => {
     if (workouts.length === 0) {
       const { error } = await supabase.from("workouts").insert([
         {
-          title: "Nový trénink",
+          title: "Zvednuto",
           date: new Date().toISOString().slice(0, 10),
           exercises: [{ id: exercise.id, name: exercise.name }],
           created: new Date().toISOString(),
@@ -69,7 +69,13 @@ export const ExerciseDetail = () => {
     fetchWorkouts();
   };
 
-  if (!exercise) return <p>Načítám stránku. Děkuji za trpělivost.</p>;
+  if (!exercise)
+    return (
+      <div className="chyba">
+        <p>Ups… tahle stránka si dneska vzala rest day. </p>
+        <p> Ale ty ne! Klikni zpátky a zvedni to!</p>
+      </div>
+    );
 
   return (
     <div className="main-panel">
@@ -90,7 +96,7 @@ export const ExerciseDetail = () => {
         )}
 
         <Button
-          text="Přidat do plánu"
+          text="Přidej do plánu"
           onClick={handleAddExercise}
           color="#236E4C"
         />
@@ -104,14 +110,13 @@ export const ExerciseDetail = () => {
             </ul>
           </div>
         )}
-
+        <Button text="Reset" onClick={handleReset} color="#D30F0F" />
         <Link to="/stickman">
-          <Button text="Přidat jinou partii" color="#767676" />
+          <Button text="Přidej další partii" color="#236E4C" />
         </Link>
         <Link to="/workoutform">
-          <Button text="Uložit trénink" color="#767676" />
+          <Button text="Začni trénink" color="#236E4C" />
         </Link>
-        <Button text="Reset" onClick={handleReset} color="#D30F0F" />
       </div>
     </div>
   );

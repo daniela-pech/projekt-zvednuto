@@ -67,7 +67,7 @@ export const ExerciseSelect = ({ category }) => {
                 setResistanceType("");
               }}
             >
-              <option value="">-- Vyberte --</option>
+              <option value="">-- Vyber --</option>
               {subcategories.map((item) => (
                 <option key={item} value={item}>
                   {item}
@@ -83,7 +83,7 @@ export const ExerciseSelect = ({ category }) => {
                 value={resistanceType}
                 onChange={(e) => setResistanceType(e.target.value)}
               >
-                <option value="">-- Vyberte --</option>
+                <option value="">-- Vyber --</option>
                 {resistanceOptions.map((odpor) => (
                   <option key={odpor} value={odpor}>
                     {odpor}

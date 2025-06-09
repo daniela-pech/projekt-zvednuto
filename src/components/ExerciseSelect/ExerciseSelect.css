@@ -1,7 +1,6 @@
 .form {
   display: flex;
   flex-direction: column;
-  /* každý label na vlastní řádek */
   gap: 1rem;
   color: #ffffff;
   font-family: 'Open Sans', sans-serif;
@@ -27,7 +26,7 @@
 }
 
 .exercise-form select {
-  background-color: #5c504d;
+  background-color: #236E4C;
   color: #ffffff;
   padding: 0.5rem 1rem;
   font-size: 1rem;
@@ -39,4 +38,8 @@
   -moz-appearance: none;
   font-family: inherit;
   cursor: pointer;
+}
+
+select:hover {
+  background-color: #202422;
 }

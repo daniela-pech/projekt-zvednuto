@@ -5,12 +5,10 @@ import { StickmanPage } from "./components/StickmanPage/StickmanPage";
 import { UpperBody } from "./components/UpperBody/UpperBody";
 import { LowerBody } from "./components/LowerBody/LowerBody";
 import { Core } from "./components/Core/Core";
-import { ExerciseList } from "./components/ExerciseList/ExerciseList";
-import { ExerciseSelect } from "./components/ExerciseSelect/ExerciseSelect";
 import { ExerciseDetail } from "./components/ExerciseDetail/ExerciseDetail";
-
 import { WorkoutSummary } from "./components/WorkoutSummary/WorkoutSummary";
 import { WorkoutForm } from "./components/WorkoutForm/WorkoutForm";
+import { ErrorPage } from "./components/ErrorPage/ErrorPage";
 import "./global.css";
 
 const App = () => {
@@ -25,6 +23,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <ErrorPage />,
   },
   {
     path: "stickman",
@@ -58,5 +57,5 @@ const router = createBrowserRouter([
 ]);
 
 createRoot(document.querySelector("#app")).render(
-  <RouterProvider router={router} />
+  <RouterProvider router={router} />,
 );

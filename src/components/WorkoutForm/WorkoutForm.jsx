@@ -7,8 +7,8 @@ import "./WorkoutForm.css";
 
 export const WorkoutForm = () => {
   const [workout, setWorkout] = useState({
-    name: "Bench",
-    sets: [{ kg: "0", reps: "0" }],
+    name: "Bench press",
+    sets: [{ kg: "", reps: "" }],
   });
   const [workouts, setWorkouts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -29,7 +29,7 @@ export const WorkoutForm = () => {
     } else {
       setWorkout({
         name: workoutsWithoutSets[0].name,
-        sets: [{ kg: "0", reps: "0" }],
+        sets: [{ kg: "", reps: "" }],
       });
     }
     setLoading(false);
@@ -40,7 +40,12 @@ export const WorkoutForm = () => {
   }, []);
 
   if (loading && isWorkoutFinished === false) {
-    return <p>Načítám tvoje zvednuté kilíčka... 🏋️‍♀️</p>;
+    return (
+      <div className="chyba">
+        <p>Ups… tahle stránka si dneska vzala rest day. </p>
+        <p> Ale ty ne! Klikni zpátky a zvedni to!</p>
+      </div>
+    );
   }
 
   const handleSetClick = async () => {
@@ -56,7 +61,7 @@ export const WorkoutForm = () => {
 
     setWorkout({
       name: workout.name,
-      sets: [...workout.sets, { kg: "0", reps: "0" }],
+      sets: [...workout.sets, { kg: "", reps: "" }],
     });
 
     console.log(workout);
@@ -81,37 +86,47 @@ export const WorkoutForm = () => {
         <h1>{workout.name}</h1>
 
         {workout.sets.map((set, index) => (
-          <div key={index} className="workout-form">
-            <div>{index + 1}. série</div>
-            <input
-              value={set.kg}
-              type="number"
-              placeholder="Váha"
-              onChange={(e) => updateSetProperty(index, "kg", e.target.value)}
-            />
-            <input
-              value={set.reps}
-              type="number"
-              placeholder="Počet opakování"
-              onChange={(e) => updateSetProperty(index, "reps", e.target.value)}
-            />
+          <div key={index} className="set-block">
+            <p className="set-label">{index + 1}. série</p>
+
+            <div className="input-row">
+              <div className="input-group">
+                <label htmlFor={`kg-${index}`}>Váha</label>
+                <input
+                  id={`kg-${index}`}
+                  value={set.kg}
+                  type="number"
+                  placeholder="Váha"
+                  onChange={(e) =>
+                    updateSetProperty(index, "kg", e.target.value)
+                  }
+                />
+              </div>
+
+              <div className="input-group">
+                <label htmlFor={`reps-${index}`}>Opakování</label>
+                <input
+                  id={`reps-${index}`}
+                  value={set.reps}
+                  type="number"
+                  placeholder="Opakování"
+                  onChange={(e) =>
+                    updateSetProperty(index, "reps", e.target.value)
+                  }
+                />
+              </div>
+            </div>
           </div>
         ))}
 
-        <Button text="Uložit sérii" onClick={handleSetClick} color="#767676" />
+        <Button text="Ulož sérii" onClick={handleSetClick} color="#236E4C" />
 
-        <br />
         {!isWorkoutFinished && (
-          <Button
-            text="Přidat další cvik"
-            onClick={fetchWorkouts}
-            color="#767676"
-          />
+          <Button text="Další cvik" onClick={fetchWorkouts} color="#767676" />
         )}
-        <br />
 
         <Link to="/workoutsummary">
-          <Button text="Ukončit workout" color="#236E4C" />
+          <Button text="Hotovo" color="#D30F0F" />
         </Link>
       </div>
     </div>

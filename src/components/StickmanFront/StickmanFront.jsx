@@ -7,9 +7,9 @@ export const StickmanFront = ({ selectedPart, handleClick, isVisible }) => {
     <div className="container">
       <div className="stickman">
         <svg
-          width="200"
-          height="500"
-          viewBox="0 0 200 400"
+          width="180"
+          height="280"
+          viewBox="0 0 180 285"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           className="stickman"
@@ -36,7 +36,9 @@ export const StickmanFront = ({ selectedPart, handleClick, isVisible }) => {
               strokeWidth="4"
               fill="rgba(255,255,255,0.01)"
               onClick={() => handleClick("left-arm")}
-              className={selectedPart === "left-arm" ? "selected" : ""}
+              className={
+                selectedPart === "left-arm" ? "selected partie" : "partie"
+              }
             />
           </Link>
           <Link to="/upper">
@@ -50,7 +52,9 @@ export const StickmanFront = ({ selectedPart, handleClick, isVisible }) => {
               strokeWidth="4"
               fill="rgba(255,255,255,0.01)"
               onClick={() => handleClick("right-arm")}
-              className={selectedPart === "right-arm" ? "selected" : ""}
+              className={
+                selectedPart === "right-arm" ? "selected partie" : "partie"
+              }
             />
           </Link>
           <Link to="/upper">
@@ -64,7 +68,9 @@ export const StickmanFront = ({ selectedPart, handleClick, isVisible }) => {
               strokeWidth="4"
               fill="rgba(255,255,255,0.01)"
               onClick={() => handleClick("chest")}
-              className={selectedPart === "chest" ? "selected" : ""}
+              className={
+                selectedPart === "chest" ? "selected partie" : "partie"
+              }
             />
           </Link>
           <Link to="/core">
@@ -78,7 +84,7 @@ export const StickmanFront = ({ selectedPart, handleClick, isVisible }) => {
               strokeWidth="4"
               fill="rgba(255,255,255,0.01)"
               onClick={() => handleClick("core")}
-              className={selectedPart === "core" ? "selected" : ""}
+              className={selectedPart === "core" ? "selected partie" : "partie"}
             />
           </Link>
           <Link to="/lower">
@@ -92,7 +98,9 @@ export const StickmanFront = ({ selectedPart, handleClick, isVisible }) => {
               strokeWidth="4"
               fill="rgba(255,255,255,0.01)"
               onClick={() => handleClick("left-leg")}
-              className={selectedPart === "left-leg" ? "selected" : ""}
+              className={
+                selectedPart === "left-leg" ? "selected partie" : "partie"
+              }
             />
           </Link>
           <Link to="/lower">
@@ -106,7 +114,9 @@ export const StickmanFront = ({ selectedPart, handleClick, isVisible }) => {
               strokeWidth="4"
               fill="rgba(255,255,255,0.01)"
               onClick={() => handleClick("right-leg")}
-              className={selectedPart === "right-leg" ? "selected" : ""}
+              className={
+                selectedPart === "right-leg" ? "selected partie" : "partie"
+              }
             />
           </Link>
         </svg>

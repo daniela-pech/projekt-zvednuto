@@ -1,3 +1,7 @@
 .button-red {
-  background-color: #D30F0F;
+  background-color: #236E4C;
+}
+
+.partie:hover {
+  fill: #D30F0F;
 }

@@ -10,6 +10,7 @@ export const WorkoutSummary = () => {
   const [loading, setLoading] = useState(true);
   const [exerciseTitle, setExerciseTitle] = useState("");
   const [isFinished, setIsFinished] = useState(false);
+  const [expandedIndex, setExpandedIndex] = useState(null);
 
   const formatDate = (timestamp) => {
     const date = new Date(timestamp);
@@ -67,7 +68,6 @@ export const WorkoutSummary = () => {
             value={exerciseTitle}
             onChange={(e) => setExerciseTitle(e.target.value)}
           />
-          <br />
           <input
             type="date"
             name="workoutDate"
@@ -76,34 +76,47 @@ export const WorkoutSummary = () => {
           />
         </form>
 
-        <h2 className="summary-title">Skvělá práce!</h2>
+        <h2 className="exercise-motto">Za dnešek máš ZVEDNUTO!</h2>
         {isFinished && (
           <>
-            uloženo
+            Tvůj trénink byl uložen.
             <Link to="/">
-              <Button text="Nový workout" color="#236E4C" />
+              <Button text="Nový trénink" color="#236E4C" />
             </Link>
           </>
         )}
         {!isFinished && (
           <>
             <div className="exercise-summary">
-              <h3 className="exercise-name">{workout[0].title}</h3>
-              <div>
-                {workout[0].exercises.map((item) => (
-                  <div key={item.name}>
-                    <div>{item.name}</div>
-                    {item.sets.map((it, index) => (
-                      <div key={index}>
-                        <div>Ahoj</div>
-                        <div>{index}.série</div>
-                        <div>{it.kg} kg</div>
-                        <div>{it.reps} opakování</div>
-                      </div>
-                    ))}
+              {workout[0].exercises.map((item, index) => (
+                <div key={item.name} className="exercise-item">
+                  <div
+                    className="exercise-name clickable"
+                    onClick={() =>
+                      setExpandedIndex(expandedIndex === index ? null : index)
+                    }
+                  >
+                    <h3>{item.name}</h3>
+                    <span className="toggle-icon">
+                      {expandedIndex === index ? "▲" : "▼"}
+                    </span>
                   </div>
-                ))}
-              </div>
+
+                  {expandedIndex === index && (
+                    <div className="exercise-sets">
+                      {item.sets.map((set, i) => (
+                        <div key={i} className="set-item">
+                          <div className="set-title">{i + 1}. série</div>
+                          <div className="set-info-row">
+                            <div className="set-info">{set.kg} kg</div>
+                            <div className="set-info">{set.reps} opakování</div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
             </div>
 
             <Button text="uložit" onClick={saveWorkout} color="#236E4C" />
