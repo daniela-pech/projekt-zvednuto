@@ -4,9 +4,11 @@ import './UpperBody.css';
 
 export const UpperBody = () => {
   return (
+    <div className="main-panel">
     <div className="container">
       <Header />
       <ExerciseSelect category="Horní část těla" />
+    </div>
     </div>
   );
 };

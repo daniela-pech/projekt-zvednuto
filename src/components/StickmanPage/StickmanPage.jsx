@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { StickmanBack } from "../StickmanBack/StickmanBack";
 import { StickmanFront } from "../StickmanFront/StickmanFront";
-import "./StickmanPage.css";
 import { Header } from "../Header/Header";
 import "./StickmanPage.css";
 
@@ -16,6 +15,7 @@ export const StickmanPage = () => {
   };
 
   return (
+    <div className="main-panel">
     <div className="container">
       <Header />
       <div className="stickman-page">
@@ -36,6 +36,7 @@ export const StickmanPage = () => {
             {isBackView ? "ZEPŘEDU" : "ZEZADU"}
           </button>
         </div>
+      </div>
       </div>
     </div>
   );

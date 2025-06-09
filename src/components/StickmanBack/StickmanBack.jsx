@@ -34,7 +34,7 @@ export const StickmanBack = ({ selectedPart, handleClick, isVisible }) => {
               rx="5"
               stroke="white"
               strokeWidth="4"
-              fill="none"
+              fill="rgba(255,255,255,0.01)" 
               onClick={() => handleClick("triceps-left")}
               className={selectedPart === "triceps-left" ? "selected" : ""}
             />
@@ -48,7 +48,7 @@ export const StickmanBack = ({ selectedPart, handleClick, isVisible }) => {
               rx="5"
               stroke="white"
               strokeWidth="4"
-              fill="none"
+              fill="rgba(255,255,255,0.01)" 
               onClick={() => handleClick("triceps-right")}
               className={selectedPart === "triceps-right" ? "selected" : ""}
             />
@@ -62,7 +62,7 @@ export const StickmanBack = ({ selectedPart, handleClick, isVisible }) => {
               rx="10"
               stroke="white"
               strokeWidth="4"
-              fill="none"
+              fill="rgba(255,255,255,0.01)" 
               onClick={() => handleClick("back")}
               className={selectedPart === "back" ? "selected" : ""}
             />
@@ -76,7 +76,7 @@ export const StickmanBack = ({ selectedPart, handleClick, isVisible }) => {
               rx="8"
               stroke="white"
               strokeWidth="4"
-              fill="none"
+              fill="rgba(255,255,255,0.01)" 
               onClick={() => handleClick("ham-left")}
               className={selectedPart === "ham-left" ? "selected" : ""}
             />
@@ -90,7 +90,7 @@ export const StickmanBack = ({ selectedPart, handleClick, isVisible }) => {
               rx="8"
               stroke="white"
               strokeWidth="4"
-              fill="none"
+              fill="rgba(255,255,255,0.01)" 
               onClick={() => handleClick("ham-right")}
               className={selectedPart === "ham-right" ? "selected" : ""}
             />

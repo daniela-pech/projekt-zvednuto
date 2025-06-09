@@ -25,9 +25,15 @@ body {
   font-family: 'Open Sans', sans-serif;
   color: white;
   background-color: #2d231e;
-  background-image: url("/pages/img/Background.JPG");
+  background-image: url('/img/Background.JPG');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   min-height: 100vh;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .container {
@@ -163,3 +169,12 @@ a {
   }
 }
 */
+
+.main-panel {
+  background-color: #2d231e(0, 0, 0, 0.6); /* průhledná černá */
+  
+  border-radius: 12px;
+  max-width: 420px;
+  width: 100%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}

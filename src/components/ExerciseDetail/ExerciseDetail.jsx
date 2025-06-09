@@ -72,6 +72,7 @@ export const ExerciseDetail = () => {
   if (!exercise) return <p>Načítání...</p>;
 
   return (
+    <div className="main-panel">
     <div className="container">
       <Header />
 
@@ -109,6 +110,7 @@ export const ExerciseDetail = () => {
         <Button text="Uložit trénink" color="#767676" />
       </Link>
       <Button text="Reset" onClick={handleReset} color="#D30F0F" />
+    </div>
     </div>
   );
 };

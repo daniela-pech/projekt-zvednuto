@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { supabase } from "../SupabaseClient/SupabaseClient";
-import "./WorkoutSummary.css";
 import { Header } from "../Header/Header";
 import { Button } from "../Button/Button";
+import "./WorkoutSummary.css";
 
 export const WorkoutSummary = () => {
   const [workout, setWorkout] = useState([]);
@@ -51,6 +51,7 @@ export const WorkoutSummary = () => {
   };
 
   return (
+    <div className="main-panel">
     <div className="container">
       <Header />
       <form className="workout-form">
@@ -77,6 +78,7 @@ export const WorkoutSummary = () => {
         </div>
       ))}
       <Button text="uložit" onClick={saveWorkout} color="#236E4C" />
+    </div>
     </div>
   );
 };

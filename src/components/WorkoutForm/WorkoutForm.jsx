@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Header } from "../Header/Header";
 import { supabase } from "../SupabaseClient/SupabaseClient";
 import { Link } from "react-router-dom";
-import "./WorkoutForm.css";
 import { Button } from "../Button/Button";
+import "./WorkoutForm.css";
 
 export const WorkoutForm = () => {
   const [workout, setWorkout] = useState({
@@ -75,6 +75,7 @@ export const WorkoutForm = () => {
   };
 
   return (
+    <div className="main-panel">
     <div className="container">
       <Header />
       <h1>{workout.name}</h1>
@@ -116,6 +117,7 @@ export const WorkoutForm = () => {
       <Link to="/workoutsummary">
         <Button text="hotovo" color="#236E4C" />
       </Link>
+    </div>
     </div>
   );
 };
