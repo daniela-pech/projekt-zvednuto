@@ -69,48 +69,50 @@ export const ExerciseDetail = () => {
     fetchWorkouts();
   };
 
-  if (!exercise) return <p>Načítání...</p>;
+  if (!exercise) return <p>Načítám stránku. Děkuji za trpělivost.</p>;
 
   return (
     <div className="main-panel">
-    <div className="container">
-      <Header />
+      <div className="container">
+        <Header />
 
-      <h1>{exercise.name}</h1>
-      <p>{exercise.description}</p>
-
-      {exercise.image_url && (
-        <img
-          src={exercise.image_url}
-          alt={exercise.name}
-          className="exercise-detail-image"
-        />
-      )}
-
-      <Button
-        text="Přidat do plánu"
-        onClick={handleAddExercise}
-        color="#236E4C"
-      />
-      {workouts.length > 0 && workouts[0].exercises && (
-        <div className="selected-exercises">
-          <h2>Plánované cviky:</h2>
-          <ul>
-            {workouts[0].exercises.map((ex, index) => (
-              <li key={index}>{ex.name}</li>
-            ))}
-          </ul>
+        <h1>{exercise.name}</h1>
+        <div className="exercise-description">
+          <p>{exercise.description}</p>
         </div>
-      )}
 
-      <Link to="/stickman">
-        <Button text="Přidat jinou partii" color="#767676" />
-      </Link>
-      <Link to="/workoutform">
-        <Button text="Uložit trénink" color="#767676" />
-      </Link>
-      <Button text="Reset" onClick={handleReset} color="#D30F0F" />
-    </div>
+        {exercise.image_url && (
+          <img
+            src={exercise.image_url}
+            alt={exercise.name}
+            className="exercise-detail-image"
+          />
+        )}
+
+        <Button
+          text="Přidat do plánu"
+          onClick={handleAddExercise}
+          color="#236E4C"
+        />
+        {workouts.length > 0 && workouts[0].exercises && (
+          <div className="selected-exercises">
+            <h2>Plánované cviky:</h2>
+            <ul>
+              {workouts[0].exercises.map((ex, index) => (
+                <li key={index}>{ex.name}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        <Link to="/stickman">
+          <Button text="Přidat jinou partii" color="#767676" />
+        </Link>
+        <Link to="/workoutform">
+          <Button text="Uložit trénink" color="#767676" />
+        </Link>
+        <Button text="Reset" onClick={handleReset} color="#D30F0F" />
+      </div>
     </div>
   );
 };

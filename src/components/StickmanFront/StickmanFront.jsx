@@ -9,7 +9,7 @@ export const StickmanFront = ({ selectedPart, handleClick, isVisible }) => {
         <svg
           width="200"
           height="500"
-          viewBox="0 0 200 500"
+          viewBox="0 0 200 400"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           className="stickman"
