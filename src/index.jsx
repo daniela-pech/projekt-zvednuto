@@ -9,7 +9,7 @@ import { Core } from "./components/Core/Core";
 import { ExerciseList } from "./components/ExerciseList/ExerciseList";
 import { ExerciseSelect } from "./components/ExerciseSelect/ExerciseSelect";
 import { ExerciseDetail } from "./components/ExerciseDetail/ExerciseDetail";
-import { WorkoutPage } from "./components/WorkoutPage/WorkoutPage";
+
 import { WorkoutSummary } from "./components/WorkoutSummary/WorkoutSummary";
 import { WorkoutForm } from "./components/WorkoutForm/WorkoutForm";
 
@@ -50,10 +50,6 @@ const router = createBrowserRouter([
   {
     path: "/workoutform",
     element: <WorkoutForm />,
-  },
-  {
-    path: "/workoutpage",
-    element: <WorkoutPage />,
   },
   {
     path: "/workoutsummary",
