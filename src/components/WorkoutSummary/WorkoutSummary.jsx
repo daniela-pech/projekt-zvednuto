@@ -81,20 +81,22 @@ export const WorkoutSummary = () => {
     <div className="main-panel">
       <div className="container">
         <Header />
-        <form className="workout-form">
-          <input
-            type="text"
-            placeholder="Zadej název tréninku"
-            value={exerciseTitle}
-            onChange={(e) => setExerciseTitle(e.target.value)}
-          />
-          <input
-            type="date"
-            name="workoutDate"
-            value={exerciseDate}
-            onChange={(e) => setExerciseDate(e.target.value)}
-          />
-        </form>
+        {!isFinished && (
+          <form className="workout-form">
+            <input
+              type="text"
+              placeholder="Zadej název tréninku"
+              value={exerciseTitle}
+              onChange={(e) => setExerciseTitle(e.target.value)}
+            />
+            <input
+              type="date"
+              name="workoutDate"
+              value={exerciseDate}
+              onChange={(e) => setExerciseDate(e.target.value)}
+            />
+          </form>
+        )}
 
         <h2 className="exercise-motto">Za dnešek máš ZVEDNUTO!</h2>
         {isFinished && (

@@ -109,19 +109,30 @@ export const ExerciseDetail = () => {
         )}
         {workouts.length > 0 && workouts[0].exercises && (
           <div className="selected-exercises">
-            <h2>Plánované cviky:</h2>
+            <h2>Dnešní tréninkový plán:</h2>
             <ul>
               {workouts[0].exercises.map((ex, index) => (
-                <li key={index}>{ex.name}</li>
+                <li key={index}>{`${index + 1}. ${ex.name}`}</li>
               ))}
             </ul>
           </div>
         )}
         {workouts.length > 0 && (
-          <Button text="Reset" onClick={handleReset} color="#D30F0F" />
+          <Button
+            text="Smaž celý trénink"
+            onClick={handleReset}
+            color="#D30F0F"
+          />
         )}
         <Link to="/stickman">
-          <Button text="Přidej další partii" color="#236E4C" />
+          <Button
+            text={
+              workouts.length === 0
+                ? "Vyber jinou partii"
+                : "Přidej další partii"
+            }
+            color="#236E4C"
+          />
         </Link>
         {workouts.length > 0 && (
           <Link to="/workoutform">

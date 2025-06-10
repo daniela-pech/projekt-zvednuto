@@ -21,7 +21,7 @@ export const WorkoutForm = () => {
       .eq("finished", false);
     setWorkouts(data[0]);
     const workoutsWithoutSets = data[0].exercises.filter(
-      (item) => item.sets === undefined,
+      (item) => item.sets === undefined
     );
 
     if (workoutsWithoutSets.length === 0) {
@@ -50,7 +50,7 @@ export const WorkoutForm = () => {
 
   const handleSetClick = async () => {
     const updatedWorkouts = workouts.exercises.map((exercise) =>
-      exercise.name === workout.name ? workout : exercise,
+      exercise.name === workout.name ? workout : exercise
     );
     const { data, error } = await supabase
       .from("workouts")
@@ -83,7 +83,12 @@ export const WorkoutForm = () => {
     <div className="main-panel">
       <div className="container">
         <Header />
-        <h1>{workout.name}</h1>
+        <h1>
+          {workouts?.exercises &&
+            `${
+              workouts.exercises.findIndex((ex) => ex.name === workout.name) + 1
+            }. ${workout.name}`}
+        </h1>
 
         {workout.sets.map((set, index) => (
           <div key={index} className="set-block">
