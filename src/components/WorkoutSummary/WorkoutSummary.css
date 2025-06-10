@@ -70,3 +70,8 @@
 .workout-form input::placeholder {
   color: #bbb;
 }
+
+.exercise-chart {
+  margin-top: 20px;
+  padding: 10px;
+}

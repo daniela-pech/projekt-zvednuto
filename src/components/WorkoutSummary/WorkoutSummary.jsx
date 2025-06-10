@@ -2,8 +2,28 @@ import React, { useEffect, useState } from "react";
 import { supabase } from "../SupabaseClient/SupabaseClient";
 import { Header } from "../Header/Header";
 import { Button } from "../Button/Button";
-import "./WorkoutSummary.css";
 import { Link } from "react-router-dom";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+import { Line } from "react-chartjs-2";
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+);
+import "./WorkoutSummary.css";
 
 export const WorkoutSummary = () => {
   const [workout, setWorkout] = useState([]);
@@ -101,19 +121,92 @@ export const WorkoutSummary = () => {
                       {expandedIndex === index ? "▲" : "▼"}
                     </span>
                   </div>
-
                   {expandedIndex === index && (
-                    <div className="exercise-sets">
-                      {item.sets.map((set, i) => (
-                        <div key={i} className="set-item">
-                          <div className="set-title">{i + 1}. série</div>
-                          <div className="set-info-row">
-                            <div className="set-info">{set.kg} kg</div>
-                            <div className="set-info">{set.reps} opakování</div>
+                    <>
+                      <div className="exercise-sets">
+                        {item.sets.map((set, i) => (
+                          <div key={i} className="set-item">
+                            <div className="set-title">{i + 1}. série</div>
+                            <div className="set-info-row">
+                              <div className="set-info">{set.kg} kg</div>
+                              <div className="set-info">
+                                {set.reps} opakování
+                              </div>
+                            </div>
                           </div>
-                        </div>
-                      ))}
-                    </div>
+                        ))}
+                      </div>
+
+                      <div className="exercise-chart">
+                        <Line
+                          data={{
+                            labels: item.sets.map((_, i) => `${i + 1}. série`),
+                            datasets: [
+                              {
+                                label: "Zvednutá váha (kg)",
+                                data: item.sets.map((set) => set.kg),
+                                borderColor: "#D30F0F",
+                                backgroundColor: "rgba(231, 76, 60, 0.2)",
+                                pointBackgroundColor: "#D30F0F",
+                                pointRadius: 4,
+                                pointHoverRadius: 6,
+                                tension: 0.4,
+                              },
+                            ],
+                          }}
+                          options={{
+                            responsive: true,
+                            plugins: {
+                              legend: {
+                                display: true,
+                                position: "bottom",
+                                labels: {
+                                  color: "#fff", // pokud máš tmavé pozadí
+                                  font: {
+                                    size: 14,
+                                    weight: "500",
+                                  },
+                                  boxWidth: 12,
+                                  usePointStyle: true,
+                                  pointStyle: "circle",
+                                },
+                              },
+                              title: {
+                                display: false,
+                              },
+                            },
+                            scales: {
+                              y: {
+                                ticks: {
+                                  color: "#ccc",
+                                },
+                                title: {
+                                  display: true,
+                                  text: "kg",
+                                  color: "#ccc",
+                                },
+                                grid: {
+                                  color: "rgba(255,255,255,0.1)",
+                                },
+                              },
+                              x: {
+                                ticks: {
+                                  color: "#ccc",
+                                },
+                                title: {
+                                  display: true,
+                                  text: "Série",
+                                  color: "#ccc",
+                                },
+                                grid: {
+                                  color: "rgba(255,255,255,0.1)",
+                                },
+                              },
+                            },
+                          }}
+                        />
+                      </div>
+                    </>
                   )}
                 </div>
               ))}

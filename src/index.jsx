@@ -41,7 +41,6 @@ const router = createBrowserRouter([
     path: "/core",
     element: <Core />,
   },
-
   {
     path: "exercise/:id",
     element: <ExerciseDetail />,
