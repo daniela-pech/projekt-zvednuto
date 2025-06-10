@@ -108,108 +108,127 @@ export const WorkoutSummary = () => {
         {!isFinished && (
           <>
             <div className="exercise-summary">
-              {workout[0].exercises.map((item, index) => (
-                <div key={item.name} className="exercise-item">
-                  <div
-                    className="exercise-name clickable"
-                    onClick={() =>
-                      setExpandedIndex(expandedIndex === index ? null : index)
-                    }
-                  >
-                    <h3>{item.name}</h3>
-                    <span className="toggle-icon">
-                      {expandedIndex === index ? "▲" : "▼"}
-                    </span>
-                  </div>
-                  {expandedIndex === index && (
-                    <>
-                      <div className="exercise-sets">
-                        {item.sets.map((set, i) => (
-                          <div key={i} className="set-item">
-                            <div className="set-title">{i + 1}. série</div>
-                            <div className="set-info-row">
-                              <div className="set-info">{set.kg} kg</div>
-                              <div className="set-info">
-                                {set.reps} opakování
-                              </div>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
+              {/* Přidána kontrola, zda workout[0] a workout[0].exercises existují */}
+              {workout[0] &&
+                workout[0].exercises &&
+                workout[0].exercises.map((item, index) => (
+                  <div key={item.name} className="exercise-item">
+                    <div
+                      className="exercise-name clickable"
+                      onClick={() =>
+                        setExpandedIndex(expandedIndex === index ? null : index)
+                      }
+                    >
+                      <h3>{item.name}</h3>
 
-                      <div className="exercise-chart">
-                        <Line
-                          data={{
-                            labels: item.sets.map((_, i) => `${i + 1}. série`),
-                            datasets: [
-                              {
-                                label: "Zvednutá váha (kg)",
-                                data: item.sets.map((set) => set.kg),
-                                borderColor: "#D30F0F",
-                                backgroundColor: "rgba(231, 76, 60, 0.2)",
-                                pointBackgroundColor: "#D30F0F",
-                                pointRadius: 4,
-                                pointHoverRadius: 6,
-                                tension: 0.4,
-                              },
-                            ],
-                          }}
-                          options={{
-                            responsive: true,
-                            plugins: {
-                              legend: {
-                                display: true,
-                                position: "bottom",
-                                labels: {
-                                  color: "#fff", // pokud máš tmavé pozadí
-                                  font: {
-                                    size: 14,
-                                    weight: "500",
+                      <span className="toggle-icon">
+                        {expandedIndex === index ? "▲" : "▼"}
+                      </span>
+                    </div>
+                    {expandedIndex === index && (
+                      <>
+                        {/* Přidána kontrola, zda item.sets existuje */}
+                        {item.sets && item.sets.length > 0 ? (
+                          <>
+                            <div className="exercise-sets">
+                              {item.sets.map((set, i) => (
+                                <div key={i} className="set-item">
+                                  <div className="set-title">
+                                    {i + 1}. série
+                                  </div>
+                                  <div className="set-info-row">
+                                    <div className="set-info">{set.kg} kg</div>
+                                    <div className="set-info">
+                                      {set.reps} opakování
+                                    </div>
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+
+                            <div className="exercise-chart">
+                              <Line
+                                data={{
+                                  labels: item.sets.map(
+                                    (_, i) => `${i + 1}. série`,
+                                  ),
+                                  datasets: [
+                                    {
+                                      label: "Zvednutá váha (kg)",
+                                      data: item.sets.map((set) => set.kg),
+                                      borderColor: "#D30F0F",
+                                      backgroundColor: "rgba(231, 76, 60, 0.2)",
+                                      pointBackgroundColor: "#D30F0F",
+                                      pointRadius: 4,
+                                      pointHoverRadius: 6,
+                                      tension: 0.4,
+                                    },
+                                  ],
+                                }}
+                                options={{
+                                  responsive: true,
+                                  plugins: {
+                                    legend: {
+                                      display: true,
+                                      position: "bottom",
+                                      labels: {
+                                        color: "#fff", // pokud máš tmavé pozadí
+                                        font: {
+                                          size: 14,
+                                          weight: "500",
+                                        },
+                                        boxWidth: 12,
+                                        usePointStyle: true,
+                                        pointStyle: "circle",
+                                      },
+                                    },
+                                    title: {
+                                      display: false,
+                                    },
                                   },
-                                  boxWidth: 12,
-                                  usePointStyle: true,
-                                  pointStyle: "circle",
-                                },
-                              },
-                              title: {
-                                display: false,
-                              },
-                            },
-                            scales: {
-                              y: {
-                                ticks: {
-                                  color: "#ccc",
-                                },
-                                title: {
-                                  display: true,
-                                  text: "kg",
-                                  color: "#ccc",
-                                },
-                                grid: {
-                                  color: "rgba(255,255,255,0.1)",
-                                },
-                              },
-                              x: {
-                                ticks: {
-                                  color: "#ccc",
-                                },
-                                title: {
-                                  display: true,
-                                  text: "Série",
-                                  color: "#ccc",
-                                },
-                                grid: {
-                                  color: "rgba(255,255,255,0.1)",
-                                },
-                              },
-                            },
-                          }}
-                        />
-                      </div>
-                    </>
-                  )}
-                </div>
-              ))}
+                                  scales: {
+                                    y: {
+                                      ticks: {
+                                        color: "#ccc",
+                                      },
+                                      title: {
+                                        display: true,
+                                        text: "kg",
+                                        color: "#ccc",
+                                      },
+                                      grid: {
+                                        color: "rgba(255,255,255,0.1)",
+                                      },
+                                    },
+                                    x: {
+                                      ticks: {
+                                        color: "#ccc",
+                                      },
+                                      title: {
+                                        display: true,
+                                        text: "Série",
+                                        color: "#ccc",
+                                      },
+                                      grid: {
+                                        color: "rgba(255,255,255,0.1)",
+                                      },
+                                    },
+                                  },
+                                }}
+                              />
+                            </div>
+                          </>
+                        ) : (
+                          <p className="no-workout-message">
+                            Dnes jsi neodcvičil žádnou sérii.
+                            <br></br>
+                            Příště to půjde lépe!
+                          </p>
+                        )}
+                      </>
+                    )}
+                  </div>
+                ))}
             </div>
 
             <Button text="uložit" onClick={saveWorkout} color="#236E4C" />
