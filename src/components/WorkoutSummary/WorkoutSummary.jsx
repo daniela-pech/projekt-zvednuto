@@ -21,7 +21,7 @@ ChartJS.register(
   LineElement,
   Title,
   Tooltip,
-  Legend,
+  Legend
 );
 import "./WorkoutSummary.css";
 
@@ -108,7 +108,6 @@ export const WorkoutSummary = () => {
         {!isFinished && (
           <>
             <div className="exercise-summary">
-              {/* Přidána kontrola, zda workout[0] a workout[0].exercises existují */}
               {workout[0] &&
                 workout[0].exercises &&
                 workout[0].exercises.map((item, index) => (
@@ -127,7 +126,6 @@ export const WorkoutSummary = () => {
                     </div>
                     {expandedIndex === index && (
                       <>
-                        {/* Přidána kontrola, zda item.sets existuje */}
                         {item.sets && item.sets.length > 0 ? (
                           <>
                             <div className="exercise-sets">
@@ -150,7 +148,7 @@ export const WorkoutSummary = () => {
                               <Line
                                 data={{
                                   labels: item.sets.map(
-                                    (_, i) => `${i + 1}. série`,
+                                    (_, i) => `${i + 1}. série`
                                   ),
                                   datasets: [
                                     {
@@ -172,7 +170,7 @@ export const WorkoutSummary = () => {
                                       display: true,
                                       position: "bottom",
                                       labels: {
-                                        color: "#fff", // pokud máš tmavé pozadí
+                                        color: "#fff",
                                         font: {
                                           size: 14,
                                           weight: "500",
