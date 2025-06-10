@@ -69,13 +69,18 @@ export const ExerciseDetail = () => {
     fetchWorkouts();
   };
 
-  if (!exercise)
+  if (!exercise || !workouts) {
     return (
       <div className="chyba">
         <p>Ups… tahle stránka si dneska vzala rest day. </p>
         <p> Ale ty ne! Klikni zpátky a zvedni to!</p>
       </div>
     );
+  }
+
+  const isDuplicist = workouts[0]?.exercises.some(
+    (ex) => ex.id === exercise?.id
+  );
 
   return (
     <div className="main-panel">
@@ -95,11 +100,13 @@ export const ExerciseDetail = () => {
           />
         )}
 
-        <Button
-          text="Přidej do plánu"
-          onClick={handleAddExercise}
-          color="#236E4C"
-        />
+        {!isDuplicist && (
+          <Button
+            text="Přidej do plánu"
+            onClick={handleAddExercise}
+            color="#236E4C"
+          />
+        )}
         {workouts.length > 0 && workouts[0].exercises && (
           <div className="selected-exercises">
             <h2>Plánované cviky:</h2>
@@ -110,13 +117,17 @@ export const ExerciseDetail = () => {
             </ul>
           </div>
         )}
-        <Button text="Reset" onClick={handleReset} color="#D30F0F" />
+        {workouts.length > 0 && (
+          <Button text="Reset" onClick={handleReset} color="#D30F0F" />
+        )}
         <Link to="/stickman">
           <Button text="Přidej další partii" color="#236E4C" />
         </Link>
-        <Link to="/workoutform">
-          <Button text="Začni trénink" color="#236E4C" />
-        </Link>
+        {workouts.length > 0 && (
+          <Link to="/workoutform">
+            <Button text="Začni trénink" color="#236E4C" />
+          </Link>
+        )}
       </div>
     </div>
   );
