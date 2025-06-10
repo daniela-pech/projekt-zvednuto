@@ -120,7 +120,9 @@ export const WorkoutSummary = () => {
                         setExpandedIndex(expandedIndex === index ? null : index)
                       }
                     >
-                      <h3>{item.name}</h3>
+                      <h3>
+                        {index + 1}. {item.name}
+                      </h3>
 
                       <span className="toggle-icon">
                         {expandedIndex === index ? "▲" : "▼"}
